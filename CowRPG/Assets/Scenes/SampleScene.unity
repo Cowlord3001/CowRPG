@@ -640,6 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 198392527}
   - component: {fileID: 198392526}
+  - component: {fileID: 198392528}
   m_Layer: 0
   m_Name: building-inn (1)
   m_TagString: Untagged
@@ -705,6 +706,31 @@ Transform:
   m_Father: {fileID: 861202107}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &198392528
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 198392525}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.84, y: 5.12}
+    newSize: {x: 3.84, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.84, y: 3.9}
+  m_EdgeRadius: 0
 --- !u!1 &214461683
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 214461685}
   - component: {fileID: 214461684}
+  - component: {fileID: 214461686}
   m_Layer: 0
   m_Name: building-inn (5)
   m_TagString: Untagged
@@ -779,6 +806,31 @@ Transform:
   m_Father: {fileID: 861202107}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &214461686
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 214461683}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.84, y: 5.12}
+    newSize: {x: 3.84, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.84, y: 3.9}
+  m_EdgeRadius: 0
 --- !u!1 &217935033
 GameObject:
   m_ObjectHideFlags: 0
@@ -2513,6 +2565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 992727245}
   - component: {fileID: 992727246}
+  - component: {fileID: 992727247}
   m_Layer: 0
   m_Name: building-inn (4)
   m_TagString: Untagged
@@ -2578,6 +2631,31 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!61 &992727247
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 992727244}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.84, y: 5.12}
+    newSize: {x: 3.84, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.84, y: 3.9}
+  m_EdgeRadius: 0
 --- !u!1 &1021021435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,6 +2739,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1025396395}
   - component: {fileID: 1025396396}
+  - component: {fileID: 1025396397}
   m_Layer: 0
   m_Name: building-inn (3)
   m_TagString: Untagged
@@ -2726,6 +2805,31 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!61 &1025396397
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1025396394}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.84, y: 5.12}
+    newSize: {x: 3.84, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.84, y: 3.9}
+  m_EdgeRadius: 0
 --- !u!1 &1026211729
 GameObject:
   m_ObjectHideFlags: 0
@@ -2735,6 +2839,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1026211730}
   - component: {fileID: 1026211731}
+  - component: {fileID: 1026211732}
   m_Layer: 0
   m_Name: building-inn (2)
   m_TagString: Untagged
@@ -2800,6 +2905,31 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!61 &1026211732
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026211729}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.84, y: 5.12}
+    newSize: {x: 3.84, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.84, y: 3.9}
+  m_EdgeRadius: 0
 --- !u!1 &1038931938
 GameObject:
   m_ObjectHideFlags: 0
@@ -3637,6 +3767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1502785006}
   - component: {fileID: 1502785007}
+  - component: {fileID: 1502785008}
   m_Layer: 0
   m_Name: building-inn (5)
   m_TagString: Untagged
@@ -3702,6 +3833,31 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!61 &1502785008
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502785005}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.84, y: 5.12}
+    newSize: {x: 3.84, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.84, y: 3.9}
+  m_EdgeRadius: 0
 --- !u!1 &1553925072
 GameObject:
   m_ObjectHideFlags: 0
@@ -4377,6 +4533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1733384325}
   - component: {fileID: 1733384324}
+  - component: {fileID: 1733384326}
   m_Layer: 0
   m_Name: building-inn
   m_TagString: Untagged
@@ -4442,6 +4599,31 @@ Transform:
   m_Father: {fileID: 861202107}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1733384326
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1733384323}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.84, y: 5.12}
+    newSize: {x: 0.96, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.84, y: 3.9}
+  m_EdgeRadius: 0
 --- !u!1 &1777625667
 GameObject:
   m_ObjectHideFlags: 0
@@ -5117,6 +5299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1988579843}
   - component: {fileID: 1988579842}
+  - component: {fileID: 1988579844}
   m_Layer: 0
   m_Name: building-inn (6)
   m_TagString: Untagged
@@ -5182,6 +5365,31 @@ Transform:
   m_Father: {fileID: 861202107}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1988579844
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1988579841}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.84, y: 5.12}
+    newSize: {x: 3.84, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.84, y: 3.9}
+  m_EdgeRadius: 0
 --- !u!1 &2020638006
 GameObject:
   m_ObjectHideFlags: 0
