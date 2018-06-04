@@ -5223,8 +5223,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1173441098}
-  - component: {fileID: 1173441097}
   - component: {fileID: 1173441096}
+  - component: {fileID: 1173441097}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
