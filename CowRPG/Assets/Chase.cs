@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Chase : MonoBehaviour {
 
-    public float Speed;
+    public float Acceleration;
+    public float MaxSpeed;
     GameObject Player;
     Rigidbody2D MyBody;
 
@@ -16,6 +17,13 @@ public class Chase : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        MyBody.AddForce(transform.right * Speed);
+        MyBody.AddForce(transform.right * Acceleration);
+
+        float CurrentSpeed = MyBody.velocity.magnitude;
+
+        if(CurrentSpeed > MaxSpeed)
+        {
+            MyBody.velocity = MaxSpeed * MyBody.velocity.normalized;
+        }
 	}
 }

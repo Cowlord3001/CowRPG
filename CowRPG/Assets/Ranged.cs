@@ -5,7 +5,8 @@ using UnityEngine;
 public class Ranged : MonoBehaviour
 {
 
-    public float Speed;
+    public float Acceleration;
+    public float MaxSpeed;
     public float PDist;
     GameObject Player;
     Rigidbody2D MyBody;
@@ -22,13 +23,13 @@ public class Ranged : MonoBehaviour
     {
         Vector2 Distance = (Player.transform.position - transform.position);
 
-        if (Distance.magnitude < PDist - 1)
+        if (Distance.magnitude < PDist - .4)
         {
-            MyBody.AddForce(-transform.right * Speed);
+            MyBody.AddForce(-transform.right * Acceleration);
         }
         else if (Distance.magnitude > PDist)
         {
-            MyBody.AddForce(transform.right * Speed);
+            MyBody.AddForce(transform.right * Acceleration);
         }
         else
         {
@@ -42,6 +43,13 @@ public class Ranged : MonoBehaviour
                 float Angle = Vector2.Dot(MyBody.velocity, transform.right);
                 MyBody.velocity = MyBody.velocity - Angle * Vector2.right;
             }
+        }
+
+        float CurrentSpeed = MyBody.velocity.magnitude;
+
+        if (CurrentSpeed > MaxSpeed)
+        {
+            MyBody.velocity = MaxSpeed * MyBody.velocity.normalized;
         }
     }
 }
