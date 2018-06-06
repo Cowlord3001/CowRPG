@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLook : MonoBehaviour {
+public class Chase : MonoBehaviour {
 
+    public float Speed;
     GameObject Player;
+    Rigidbody2D MyBody;
 
 	// Use this for initialization
 	void Start () {
         Player = GameObject.Find("Player");
+        MyBody = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Vector2 Look = Player.transform.position - transform.position;
-        float angle = Mathf.Atan2(Look.y, Look.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    }
+        MyBody.AddForce(transform.right * Speed);
+	}
 }
