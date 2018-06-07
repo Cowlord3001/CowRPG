@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 627523553}
   - component: {fileID: 627523552}
   - component: {fileID: 627523559}
+  - component: {fileID: 627523551}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -281,6 +282,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &627523551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 627523550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043b0324dfcddbc48b6b0b2a4c4bdd04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Teleport_Cooldown: 1
+  Teleport_Number: 0
 --- !u!114 &627523552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,7 +442,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 627523550}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 931723c3a2c20b2409cdda35978ddeb0, type: 3}
   m_Name: 
@@ -605,3 +619,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 1920104304926914, guid: 87c97578429357045aaa5ff3dd78a42e, type: 2}
   ROF: 0.05
+--- !u!1 &1438209867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1438209869}
+  - component: {fileID: 1438209868}
+  m_Layer: 0
+  m_Name: TeleportRaycast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1438209868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1438209867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc05e2e0a0611b4bbc5548a7d469fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Min: 5
+  Max: 10
+  DirNum: 8
+--- !u!4 &1438209869
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1438209867}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
