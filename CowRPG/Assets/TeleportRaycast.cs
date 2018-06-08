@@ -23,37 +23,41 @@ public class TeleportRaycast : MonoBehaviour {
         Vector2 dir = new Vector2(x, y);
 
         dir = dir - (Vector2)transform.position;
-        Debug.DrawRay(transform.position, dir, Color.green, 800f);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, Max);
+        Debug.DrawRay(transform.position, (Vector2)transform.position + dir, Color.green, 800f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, (Vector2)transform.position + dir, Max);
 
-        if(Min > hit.collider.gameObject.transform.position.magnitude)
+        if(hit.collider == null)
+        {
+            float Range;
+            Range = Random.Range(Min, Max);
+            Vector2 TargetPos = (Vector2)transform.position + dir.normalized * Range;
+            Debug.Log("Teleporting to (" + TargetPos.x + "," + TargetPos.y + ")");
+            return TargetPos;
+        }
+        else if(Min > hit.collider.gameObject.transform.position.magnitude)
         {
             return Vector2.zero;
         }
-
-       else if (hit.collider != null)
+        else
         {
             float Range;
             Range = Random.Range(Min, hit.collider.gameObject.transform.position.magnitude);
             Vector2 TargetPos = (Vector2)transform.position + dir.normalized * Range;
             return TargetPos;
         }
-
-        else
-        {
-            float Range;
-            Range = Random.Range(Min, Max);
-            Vector2 TargetPos = (Vector2)transform.position + dir.normalized * Range;
-            return TargetPos;
-        }
+        
     }
 
    public Vector2 RandomizedTP()
     {
         int i = Random.Range(1, DirNum);
         float x, y;
+
         x = Mathf.Cos(2 * Mathf.PI * i / DirNum);
         y = Mathf.Sin(2 * Mathf.PI * i / DirNum);
+
+
+        Debug.Log("Racast Chosen: " + i + " Raycast Direction: x = " + x.ToString("R") + " y = " + y.ToString("R"));
 
         return Teleport(x, y);
 
