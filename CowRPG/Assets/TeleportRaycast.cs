@@ -22,27 +22,25 @@ public class TeleportRaycast : MonoBehaviour {
     {
         Vector2 dir = new Vector2(x, y);
 
-        dir = dir - (Vector2)transform.position;
-        Debug.DrawRay(transform.position, (Vector2)transform.position + dir, Color.green, 800f);
+        Debug.DrawRay(transform.position, dir, Color.green, 800f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, (Vector2)transform.position + dir, Max);
 
         if(hit.collider == null)
         {
             float Range;
             Range = Random.Range(Min, Max);
-            Vector2 TargetPos = (Vector2)transform.position + dir.normalized * Range;
-            Debug.Log("Teleporting to (" + TargetPos.x + "," + TargetPos.y + ")");
+            Vector2 TargetPos = (Vector2)transform.position + dir * Range;
             return TargetPos;
         }
         else if(Min > hit.collider.gameObject.transform.position.magnitude)
         {
-            return Vector2.zero;
+            return transform.position;
         }
         else
         {
             float Range;
             Range = Random.Range(Min, hit.collider.gameObject.transform.position.magnitude);
-            Vector2 TargetPos = (Vector2)transform.position + dir.normalized * Range;
+            Vector2 TargetPos = (Vector2)transform.position + dir * Range;
             return TargetPos;
         }
         
@@ -55,9 +53,7 @@ public class TeleportRaycast : MonoBehaviour {
 
         x = Mathf.Cos(2 * Mathf.PI * i / DirNum);
         y = Mathf.Sin(2 * Mathf.PI * i / DirNum);
-
-
-        Debug.Log("Racast Chosen: " + i + " Raycast Direction: x = " + x.ToString("R") + " y = " + y.ToString("R"));
+        
 
         return Teleport(x, y);
 
