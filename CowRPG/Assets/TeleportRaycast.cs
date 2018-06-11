@@ -23,7 +23,7 @@ public class TeleportRaycast : MonoBehaviour {
         Vector2 dir = new Vector2(x, y);
 
         Debug.DrawRay(transform.position, dir, Color.green, 800f);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, (Vector2)transform.position + dir, Max);
+        RaycastHit2D hit = Physics2D.Raycast((Vector2) transform.position+Min*dir, (Vector2)transform.position + dir*Max, Max);
 
         if(hit.collider == null)
         {
@@ -48,7 +48,7 @@ public class TeleportRaycast : MonoBehaviour {
 
    public Vector2 RandomizedTP()
     {
-        int i = Random.Range(1, DirNum);
+        int i = Random.Range(1, DirNum+1);
         float x, y;
 
         x = Mathf.Cos(2 * Mathf.PI * i / DirNum);

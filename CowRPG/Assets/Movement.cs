@@ -46,6 +46,10 @@ public class Movement : MonoBehaviour {
                     start = new Vector2(xpos, ypos);
                     target = new Vector2(xtar, ytar);
                 }
+                else
+                {
+                    ChangeMove(-1, 0);
+                }
             }
             else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
             {
@@ -56,6 +60,10 @@ public class Movement : MonoBehaviour {
                     moving = true;
                     start = new Vector2(xpos, ypos);
                     target = new Vector2(xtar, ytar);
+                }
+                else
+                {
+                    ChangeMove(1, 0);
                 }
             }
             else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
@@ -68,6 +76,10 @@ public class Movement : MonoBehaviour {
                     start = new Vector2(xpos, ypos);
                     target = new Vector2(xtar, ytar);
                 }
+                else
+                {
+                    ChangeMove(-1, 0);
+                }
             }
             else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
             {
@@ -79,7 +91,13 @@ public class Movement : MonoBehaviour {
                     start = new Vector2(xpos, ypos);
                     target = new Vector2(xtar, ytar);
                 }
+                else
+                {
+                    ChangeMove(1, 0);
+                }
             }
+
+
             else if (Input.GetKey(KeyCode.W))
             {
                 ytar = ypos + 1;
@@ -89,6 +107,10 @@ public class Movement : MonoBehaviour {
                     moving = true;
                     start = new Vector2(xpos, ypos);
                     target = new Vector2(xtar, ytar);
+                }
+                else
+                {
+                    ChangeMove(0, 1);
                 }
             }
             else if (Input.GetKey(KeyCode.S))
@@ -101,6 +123,10 @@ public class Movement : MonoBehaviour {
                     start = new Vector2(xpos, ypos);
                     target = new Vector2(xtar, ytar);
                 }
+                else
+                {
+                    ChangeMove(0, -1);
+                }
             }
             else if (Input.GetKey(KeyCode.A))
             {
@@ -112,6 +138,10 @@ public class Movement : MonoBehaviour {
                     start = new Vector2(xpos, ypos);
                     target = new Vector2(xtar, ytar);
                 }
+                else
+                {
+                    ChangeMove(-1, 0);
+                }
             }
             else if (Input.GetKey(KeyCode.D))
             {
@@ -122,6 +152,10 @@ public class Movement : MonoBehaviour {
                     moving = true;
                     start = new Vector2(xpos, ypos);
                     target = new Vector2(xtar, ytar);
+                }
+                else
+                {
+                    ChangeMove(1,0);
                 }
             }
 
@@ -154,6 +188,104 @@ public class Movement : MonoBehaviour {
         else
         {
             return true;
+        }
+    }
+
+    void ChangeMove(int x, int y)
+    {
+        if (x > 0 && Input.GetKey(KeyCode.W))
+        {
+            ytar = ypos + 1;
+            xtar = xpos;
+            if (CanMove(xtar, ytar))
+            {
+                moving = true;
+                start = new Vector2(xpos, ypos);
+                target = new Vector2(xtar, ytar);
+            }
+        }
+
+        if (x > 0 && Input.GetKey(KeyCode.S))
+        {
+            ytar = ypos - 1;
+            xtar = xpos;
+            if (CanMove(xtar, ytar))
+            {
+                moving = true;
+                start = new Vector2(xpos, ypos);
+                target = new Vector2(xtar, ytar);
+            }
+        }
+
+        if (x < 0 && Input.GetKey(KeyCode.W))
+        {
+            ytar = ypos + 1;
+            xtar = xpos;
+            if (CanMove(xtar, ytar))
+            {
+                moving = true;
+                start = new Vector2(xpos, ypos);
+                target = new Vector2(xtar, ytar);
+            }
+        }
+        if (x < 0 && Input.GetKey(KeyCode.S))
+        {
+            ytar = ypos - 1;
+            xtar = xpos;
+            if (CanMove(xtar, ytar))
+            {
+                moving = true;
+                start = new Vector2(xpos, ypos);
+                target = new Vector2(xtar, ytar);
+            }
+        }
+
+
+        if (y > 0 && Input.GetKey(KeyCode.D))
+        {
+            ytar = ypos;
+            xtar = xpos + 1;
+            if (CanMove(xtar, ytar))
+            {
+                moving = true;
+                start = new Vector2(xpos, ypos);
+                target = new Vector2(xtar, ytar);
+            }
+        }
+
+        if (y > 0 && Input.GetKey(KeyCode.A))
+        {
+            ytar = ypos;
+            xtar = xpos - 1;
+            if (CanMove(xtar, ytar))
+            {
+                moving = true;
+                start = new Vector2(xpos, ypos);
+                target = new Vector2(xtar, ytar);
+            }
+        }
+
+        if (y < 0 && Input.GetKey(KeyCode.D))
+        {
+            ytar = ypos;
+            xtar = xpos + 1;
+            if (CanMove(xtar, ytar))
+            {
+                moving = true;
+                start = new Vector2(xpos, ypos);
+                target = new Vector2(xtar, ytar);
+            }
+        }
+        if (y < 0 && Input.GetKey(KeyCode.A))
+        {
+            ytar = ypos;
+            xtar = xpos - 1;
+            if (CanMove(xtar, ytar))
+            {
+                moving = true;
+                start = new Vector2(xpos, ypos);
+                target = new Vector2(xtar, ytar);
+            }
         }
     }
 }

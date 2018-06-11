@@ -276,7 +276,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 276543677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.390625}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 733420119}
   - component: {fileID: 733420118}
   - component: {fileID: 733420117}
-  - component: {fileID: 733420122}
+  - component: {fileID: 733420123}
   m_Layer: 0
   m_Name: TargetDummy
   m_TagString: Enemy
@@ -310,7 +310,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 733420115}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: -0.15518089}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fec50558f848b04795eb73371e3834c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rotation: 1
+  Rotation: 3
 --- !u!114 &733420118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +340,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 1152822650491740, guid: af6e031f1d412d24ab84ee1a94692435, type: 2}
-  ROF: 0.5
+  ROF: 0.1
+  Type: Burst
+  BurstCooldown: 1
+  BurstNumber: 5
 --- !u!114 &733420119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248c06dd74fef11488d28811c8357c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 20
   Death: {fileID: 1159300245256592, guid: 5afe2c15ce061a14792899f0521c77e9, type: 2}
 --- !u!50 &733420120
 Rigidbody2D:
@@ -419,19 +422,31 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!114 &733420122
-MonoBehaviour:
+--- !u!61 &733420123
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 733420115}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 043b0324dfcddbc48b6b0b2a4c4bdd04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Teleport_Cooldown: 2
-  Teleport_Number: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0
 --- !u!1 &1395984780
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   DashTime: 0.2
-  DashDist: 20
+  DashDist: 25
   SlideDist: 0.1
   DashThresh: 3
   DashCool: 1
@@ -601,7 +616,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1614148389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.06, y: 1.97, z: -0.15518089}
+  m_LocalPosition: {x: 0, y: 0, z: -0.15518089}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -620,4 +635,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Min: 1
   Max: 5
-  DirNum: 8
+  DirNum: 16
