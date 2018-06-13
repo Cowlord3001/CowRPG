@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour {
     Vector2 target;
     bool moving = false;
 
+    bool freeze;
+
     // Use this for initialization
     void Awake () {
         xpos = (int)transform.position.x;
@@ -24,12 +26,21 @@ public class Movement : MonoBehaviour {
         ytar = 0;
         start = transform.position;
         target = transform.position;
+        freeze = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        Move();
+        if (freeze == false)
+        {
+            Move();
+        }
 	}
+
+    public void togglefreeze()
+    {
+        freeze = !freeze;
+    }
 
     void Move()
     {
@@ -195,7 +206,7 @@ public class Movement : MonoBehaviour {
 
         dir = dir - (Vector2)transform.position;
         Debug.DrawRay(transform.position, dir, Color.green, 800f);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir ,1f);
+        RaycastHit2D hit = Physics2D.Raycast((Vector2) transform.position + dir*.05f, dir ,1f);
         if (hit.collider != null)
         {
             return false;

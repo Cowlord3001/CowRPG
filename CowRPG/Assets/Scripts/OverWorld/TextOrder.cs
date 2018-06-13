@@ -12,35 +12,40 @@ public class TextOrder : MonoBehaviour {
     public bool FirstEnter;
 
     bool FirstRead;
-
+   
 
     // Use this for initialization
-    void Start () {
-        Pages = GetComponentsInChildren<Transform>();
-        LastPage = Pages.Length - 1;
-        CurrentPage = 3;
-        Debug.Log(LastPage);
-        FirstEnter = true;
-        FirstRead = true;
-        for (int i = 4; i <= LastPage; i++)
+    void OnEnable () {
+        if (LastPage == 0)
         {
-            Pages[i].gameObject.SetActive(false);
+            Pages = GetComponentsInChildren<Transform>();
+            LastPage = Pages.Length;
+            FirstRead = true;
+            CurrentPage = 1;
+        }
+        else
+        {
+            CurrentPage = LastPage-2;
+        }
+
+        if (FirstRead == true)
+        {
+            FirstEnter = true;
+            Pages[CurrentPage].gameObject.SetActive(true);
+            for (int i = 2; i < LastPage; i++)
+            {
+                Pages[i].gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            for (int i = 1; i < LastPage; i++)
+            {
+                Pages[i].gameObject.SetActive(false);
+            }
+            Pages[LastPage-1].gameObject.SetActive(true);
         }
 	}
-
-    public void StartDialogue()
-    {
-        Pages = GetComponentsInChildren<Transform>();
-        LastPage = Pages.Length - 1;
-        CurrentPage = 3;
-        Debug.Log(LastPage);
-        FirstEnter = true;
-        FirstRead = true;
-        for (int i = 4; i <= LastPage; i++)
-        {
-            Pages[i].gameObject.SetActive(false);
-        }
-    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -61,7 +66,7 @@ public class TextOrder : MonoBehaviour {
 
     void OpenNextPage()
     {
-        if (CurrentPage == LastPage)
+        if (CurrentPage == LastPage-2)
         {
             CloseDialogue();
         }
@@ -70,20 +75,14 @@ public class TextOrder : MonoBehaviour {
             CurrentPage = CurrentPage + 1;
             Pages[CurrentPage].gameObject.SetActive(true);
             Pages[CurrentPage - 1].gameObject.SetActive(false);
+            
         }
     }
 
     public void CloseDialogue()
     {
-        if(CurrentPage == LastPage)
-        {
-            FirstRead = false;
-        }
-
-        if(FirstRead == false)
-        {
-            gameObject.SetActive(false);
-        }
-        
+           FirstRead = false;
+           gameObject.SetActive(false);
+           GameObject.Find("Player").GetComponent<Movement>().togglefreeze();
     }
 }
