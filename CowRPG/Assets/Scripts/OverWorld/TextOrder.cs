@@ -9,23 +9,53 @@ public class TextOrder : MonoBehaviour {
     int CurrentPage;
     int LastPage;
 
-	// Use this for initialization
-	void Start () {
+    public bool FirstEnter;
+
+    bool FirstRead;
+
+
+    // Use this for initialization
+    void Start () {
         Pages = GetComponentsInChildren<Transform>();
         LastPage = Pages.Length - 1;
         CurrentPage = 3;
         Debug.Log(LastPage);
+        FirstEnter = true;
+        FirstRead = true;
         for (int i = 4; i <= LastPage; i++)
         {
             Pages[i].gameObject.SetActive(false);
         }
 	}
+
+    public void StartDialogue()
+    {
+        Pages = GetComponentsInChildren<Transform>();
+        LastPage = Pages.Length - 1;
+        CurrentPage = 3;
+        Debug.Log(LastPage);
+        FirstEnter = true;
+        FirstRead = true;
+        for (int i = 4; i <= LastPage; i++)
+        {
+            Pages[i].gameObject.SetActive(false);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            OpenNextPage();
+            if(FirstEnter == true)
+            {
+                FirstEnter = false;
+            }
+            else
+            {
+                OpenNextPage();
+                FirstEnter = true;
+            }
+
         }
 	}
 
@@ -45,6 +75,15 @@ public class TextOrder : MonoBehaviour {
 
     public void CloseDialogue()
     {
-        gameObject.SetActive(false);
+        if(CurrentPage == LastPage)
+        {
+            FirstRead = false;
+        }
+
+        if(FirstRead == false)
+        {
+            gameObject.SetActive(false);
+        }
+        
     }
 }

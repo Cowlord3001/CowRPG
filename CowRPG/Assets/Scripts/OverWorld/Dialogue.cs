@@ -12,11 +12,13 @@ public class Dialogue : MonoBehaviour {
     int Character;
     public float TextSpeed;
 
+
+    TextOrder txtOrd;
 	// Use this for initialization
 	void OnEnable() {
 		if(TextFile != null)
         {
-            Debug.Log("awake");
+            txtOrd = GetComponentInParent<TextOrder>();
             CurrentText.text = "";
             Line = 0;
             Character = 0;
@@ -33,7 +35,15 @@ public class Dialogue : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-		
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            CancelInvoke();
+            CurrentText.text = "";
+            for (int i = 0; i < TextLines.Length; i++)
+            {
+                CurrentText.text = CurrentText.text + TextLines[i] + '\n';
+            }
+        }
 	}
 
     void UpdateText()
@@ -47,10 +57,12 @@ public class Dialogue : MonoBehaviour {
         if (Line > TextLines.Length-1)
         {
             CancelInvoke();
+            txtOrd.FirstEnter = false;
         }
         else if(Line == TextLines.Length-1 && TextLines[Line].Length - 1 <= 0)
         {
             CancelInvoke();
+            txtOrd.FirstEnter = false;
         }
         else
         {
