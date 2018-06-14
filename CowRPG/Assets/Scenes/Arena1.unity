@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 51207951}
   m_Layer: 0
   m_Name: PlayerEye
-  m_TagString: Untagged
+  m_TagString: Spellcaster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbb9790e9475d64e90e6f4194fd0226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 1920104304926914, guid: 87c97578429357045aaa5ff3dd78a42e, type: 2}
+  RangedBullet: {fileID: 1920104304926914, guid: 87c97578429357045aaa5ff3dd78a42e,
+    type: 2}
+  MeleeBullet: {fileID: 1745416688440648, guid: 117f44810e74039458abdcfbbe053b57,
+    type: 2}
+  SpellBullet: {fileID: 1965582941320604, guid: 07d3f7e23c866124b9efe10fb98d6213,
+    type: 2}
   ROF: 0.05
 --- !u!212 &51207952
 SpriteRenderer:
@@ -355,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248c06dd74fef11488d28811c8357c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 20
+  hp: 50
   Death: {fileID: 1159300245256592, guid: 5afe2c15ce061a14792899f0521c77e9, type: 2}
 --- !u!50 &733420120
 Rigidbody2D:
