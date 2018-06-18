@@ -54,6 +54,10 @@ public class Firing : MonoBehaviour {
 
     void SpellFire()
     {
+        if (GO == null)
+        {
+            Charging = false;
+        }
         if (Input.GetKeyDown(KeyCode.Mouse0) && Timestamp + ROF * 8 < Time.time)
         {
             GO = Instantiate(SpellBullet, transform.position, transform.parent.transform.rotation);
@@ -61,10 +65,10 @@ public class Firing : MonoBehaviour {
             Charging = true;
             Scale = GO.transform.localScale;
         }
-        else if(Input.GetKeyUp(KeyCode.Mouse0))
+        else if(Input.GetKeyUp(KeyCode.Mouse0) && GO != null)
         {
             GO.GetComponent<Rigidbody2D>().velocity = transform.right * 5;
-            GO.transform.parent = null;
+            GO = null;
             Charging = false;
         }
         if(Charging == true)
@@ -73,7 +77,12 @@ public class Firing : MonoBehaviour {
             GO.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
             Debug.Log(GO.transform.localScale);
-            GO.transform.localScale = GO.transform.localScale + Scale * Time.deltaTime * .5f;
+            if (GO.transform.localScale.x < 5)
+            {
+                GO.transform.localScale = GO.transform.localScale + Scale * Time.deltaTime * .5f;
+                GO.GetComponent<Bullet>().Death.GetComponent<ParticleSystem>().startSize = GO.transform.localScale.x * .06f;
+                GO.GetComponent<Bullet>().Damage = 10 + (190 / 8) * (Time.time - Timestamp);
+            }
         }
     }
 }

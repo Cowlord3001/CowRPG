@@ -83,6 +83,6 @@ public class TextOrder : MonoBehaviour {
     {
            FirstRead = false;
            gameObject.SetActive(false);
-           GameObject.Find("Player").GetComponent<Movement>().togglefreeze();
+           GameObject.Find("Player").GetComponent<NewMovement>().togglefreeze();
     }
 }

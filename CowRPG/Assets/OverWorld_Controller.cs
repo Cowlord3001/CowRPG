@@ -1,18 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class OverWorld_Controller : MonoBehaviour {
+public class OverWorld_Controller : MonoBehaviour
+{
 
-    GameObject OverWorld;
-	// Use this for initialization
-	void Start () {
-        DontDestroyOnLoad(gameObject);
+    public static GameObject OverWorld;
+    public static GameObject Arena;
+
+    // Use this for initialization
+    void Start ()
+    {
         OverWorld = GameObject.Find("OverWorld");
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        Arena = GameObject.Find("Arena");
+
+        Arena.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            LoadWorld();
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            LoadArena();
+        }
+    }
+
+    void LoadWorld()
+    {
+        Arena.SetActive(false);
+        OverWorld.SetActive(true);
+    }
+
+    void LoadArena()
+    {
+        Arena.SetActive(true);
+        OverWorld.SetActive(false);
+    }
 }

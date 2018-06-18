@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   BulletLife: 8
-  Damage: 3
+  Damage: 5
   Death: {fileID: 1315234090345772, guid: 645b8cbf70e58c0488259293dcc358e7, type: 2}
 --- !u!212 &212964525254297746
 SpriteRenderer:

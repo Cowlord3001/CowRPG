@@ -26,5 +26,7 @@ public class EnemyHealth : MonoBehaviour {
             Destroy(GO, 2);
             Destroy(gameObject);
         }
+
+        Debug.Log("Damage =" + DMG);
     }
 }
