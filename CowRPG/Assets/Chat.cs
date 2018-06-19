@@ -5,7 +5,19 @@ using UnityEngine;
 public class Chat : MonoBehaviour {
 
     public GameObject DialogueControl;
-    bool Chatting;
+    bool Chatting
+    //{
+    //    get {
+    //        return Chatting;
+    //    }
+    //    set {
+    //        if(Chatting == true && Event == true)
+    //        {
+    //            OverWorld_Controller.LoadArena();
+    //        }
+    //    }
+    //}
+    public bool Event;
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +38,7 @@ public class Chat : MonoBehaviour {
         }
         else if (DialogueControl.activeSelf == false)
         {
-            Chatting = false;
+           Chatting = false;
         }
     }
 
@@ -36,3 +48,5 @@ public class Chat : MonoBehaviour {
         Chatting = true;
     }
 }
+
+//GameObject.Find("OverWorld Control").GetComponent<QuestLog>().ChooseClass();

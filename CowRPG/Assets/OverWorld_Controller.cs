@@ -16,6 +16,7 @@ public class OverWorld_Controller : MonoBehaviour
         Arena = GameObject.Find("Arena");
 
         Arena.SetActive(false);
+        
     }
 
     private void Update()
@@ -31,13 +32,13 @@ public class OverWorld_Controller : MonoBehaviour
         }
     }
 
-    void LoadWorld()
+    public static void LoadWorld()
     {
         Arena.SetActive(false);
         OverWorld.SetActive(true);
     }
 
-    void LoadArena()
+    public static void LoadArena()
     {
         Arena.SetActive(true);
         OverWorld.SetActive(false);
