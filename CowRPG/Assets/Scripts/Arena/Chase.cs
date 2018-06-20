@@ -6,12 +6,12 @@ public class Chase : MonoBehaviour {
 
     public float Acceleration;
     public float MaxSpeed;
-    GameObject Player;
+    //GameObject Player;
     Rigidbody2D MyBody;
 
 	// Use this for initialization
 	void Start () {
-        Player = GameObject.Find("Player");
+        //Player = GameObject.Find("Player");
         MyBody = GetComponent<Rigidbody2D>();
 	}
 	

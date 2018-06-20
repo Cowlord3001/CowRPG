@@ -5,7 +5,7 @@ using UnityEngine;
 public class Chat : MonoBehaviour {
 
     public GameObject DialogueControl;
-    bool Chatting
+    bool Chatting;
     //{
     //    get {
     //        return Chatting;

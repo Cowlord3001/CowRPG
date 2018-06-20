@@ -80,7 +80,9 @@ public class Firing : MonoBehaviour {
             if (GO.transform.localScale.x < 5)
             {
                 GO.transform.localScale = GO.transform.localScale + Scale * Time.deltaTime * .5f;
-                GO.GetComponent<Bullet>().Death.GetComponent<ParticleSystem>().startSize = GO.transform.localScale.x * .06f;
+                ParticleSystem.MainModule main;
+                main = GO.GetComponent<Bullet>().Death.GetComponent<ParticleSystem>().main;
+                main.startSize = GO.transform.localScale.x * .06f;
                 GO.GetComponent<Bullet>().Damage = 10 + (190 / 8) * (Time.time - Timestamp);
             }
         }
