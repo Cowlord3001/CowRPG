@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class TextOrder : MonoBehaviour {
 
-    public Transform [] Pages;
+    //public Transform [] Children;
+    public List<GameObject> pages;
     int CurrentPage;
     int LastPage;
 
@@ -18,32 +19,39 @@ public class TextOrder : MonoBehaviour {
     void OnEnable () {
         if (LastPage == 0)
         {
-            Pages = GetComponentsInChildren<Transform>();
-            LastPage = Pages.Length;
+            //Children = GetComponentsInChildren<Transform>();
+            //foreach(Transform pg in Children)
+            //{
+            //    if(pg.gameObject.tag.StartsWith("Text"))
+            //    {
+            //        pages.Add(pg.gameObject);
+            //    }
+            //}
+            LastPage = pages.Count;
             FirstRead = true;
-            CurrentPage = 1;
+            CurrentPage = 0;
         }
         else
         {
-            CurrentPage = LastPage-2;
+            CurrentPage = LastPage - 1;
         }
 
         if (FirstRead == true)
         {
             FirstEnter = true;
-            Pages[CurrentPage].gameObject.SetActive(true);
-            for (int i = 2; i < LastPage; i++)
+            pages[CurrentPage].SetActive(true);
+            for (int i = 1; i < LastPage; i++)
             {
-                Pages[i].gameObject.SetActive(false);
+                pages[i].SetActive(false);
             }
         }
         else
         {
-            for (int i = 1; i < LastPage; i++)
+            for (int i = 0; i < LastPage-1; i++)
             {
-                Pages[i].gameObject.SetActive(false);
+                pages[i].SetActive(false);
             }
-            Pages[LastPage-1].gameObject.SetActive(true);
+            pages[LastPage-1].SetActive(true);
         }
 	}
 	
@@ -66,23 +74,23 @@ public class TextOrder : MonoBehaviour {
 
     void OpenNextPage()
     {
-        if (CurrentPage == LastPage-2)
+        if (CurrentPage == LastPage-1)
         {
             CloseDialogue();
         }
         else
         {
             CurrentPage = CurrentPage + 1;
-            Pages[CurrentPage].gameObject.SetActive(true);
-            Pages[CurrentPage - 1].gameObject.SetActive(false);
+            pages[CurrentPage].SetActive(true);
+            pages[CurrentPage - 1].SetActive(false);
             
         }
     }
 
     public void CloseDialogue()
     {
-           FirstRead = false;
-           gameObject.SetActive(false);
-           GameObject.Find("Player").GetComponent<NewMovement>().togglefreeze();
+        FirstRead = false;
+        GameObject.Find("Player").GetComponent<NewMovement>().togglefreeze();
+        gameObject.SetActive(false);
     }
 }

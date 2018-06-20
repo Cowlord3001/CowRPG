@@ -3225,7 +3225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueControl: {fileID: 1328663014}
-  Event: 1
+  Event: 0
 --- !u!58 &515707235
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9679,7 +9679,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d50c0b0088164d4f825d54cb3dcbea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pages: []
+  Children: []
+  pages:
+  - {fileID: 1410158399}
+  - {fileID: 556369532}
   FirstEnter: 0
 --- !u!114 &1328663017
 MonoBehaviour:
@@ -10191,7 +10194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d50c0b0088164d4f825d54cb3dcbea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pages: []
+  Children: []
+  pages:
+  - {fileID: 1834297513}
+  - {fileID: 10634407}
   FirstEnter: 0
 --- !u!114 &1394599566
 MonoBehaviour:
@@ -12557,7 +12563,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d50c0b0088164d4f825d54cb3dcbea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pages: []
+  Children: []
+  pages:
+  - {fileID: 1155658407}
+  - {fileID: 3510888}
+  - {fileID: 304114679}
   FirstEnter: 0
 --- !u!114 &1751543569
 MonoBehaviour:
@@ -12721,7 +12731,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d50c0b0088164d4f825d54cb3dcbea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pages: []
+  Children: []
+  pages: []
   FirstEnter: 0
 --- !u!114 &1794503313
 MonoBehaviour:
