@@ -8,6 +8,7 @@ TagManager:
   - Ranger
   - Fighter
   - Spellcaster
+  - Wall
   layers:
   - Default
   - TransparentFX

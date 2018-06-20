@@ -25,7 +25,13 @@ public class Bullet : MonoBehaviour {
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.SendMessage("ApplyDMG", Damage);
-            GameObject GO = Instantiate(Death,transform.position,Quaternion.identity);
+            GameObject GO = Instantiate(Death, transform.position, Quaternion.identity);
+            Destroy(GO, 2);
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.tag == "Wall")
+        {
+            GameObject GO = Instantiate(Death, transform.position, Quaternion.identity);
             Destroy(GO, 2);
             Destroy(gameObject);
         }
