@@ -14,13 +14,19 @@ public class NewMovement : MonoBehaviour {
         freeze = false;
 	}
 
-    public void togglefreeze()
+    public void freezeoff()
     {
-        freeze = !freeze;
+        freeze = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void freezeon()
+    {
+        freeze = true;
+    }
+
+
+    // Update is called once per frame
+    void Update () {
         float x = Input.GetAxis("Horizontal");
         if (Input.GetKey(KeyCode.A))
         {

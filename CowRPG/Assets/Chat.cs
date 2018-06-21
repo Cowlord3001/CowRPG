@@ -34,7 +34,7 @@ public class Chat : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Return) && Chatting == false)
         {
            Invoke("StartDialogue", .05f);
-           collision.gameObject.SendMessage("togglefreeze");
+           collision.gameObject.SendMessage("freezeon");
         }
         else if (DialogueControl.activeSelf == false)
         {

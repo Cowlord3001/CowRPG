@@ -19,6 +19,10 @@ public class QuestLog : MonoBehaviour {
     public GameObject[] TrainerText;
     public GameObject Trainer;
 
+    [SerializeField]
+    public GameObject[] GuardText;
+    public GameObject Guard;
+
     public static string Class;
 
 	// Use this for initialization
@@ -38,5 +42,7 @@ public class QuestLog : MonoBehaviour {
         Overworld.SetActive(false);
         //update dialogue
         Mayor.GetComponent<Chat>().DialogueControl = MayorText[1];
+        Trainer.GetComponent<Chat>().DialogueControl = TrainerText[1];
+        Guard.GetComponent<Chat>().DialogueControl = GuardText[1];
     }
 }

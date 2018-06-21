@@ -33,7 +33,7 @@ public class TextOrder : MonoBehaviour {
         }
         else
         {
-            CurrentPage = LastPage - 1;
+            CurrentPage = LastPage - 2;
         }
 
         if (FirstRead == true)
@@ -74,7 +74,7 @@ public class TextOrder : MonoBehaviour {
 
     void OpenNextPage()
     {
-        if (CurrentPage == LastPage-1)
+        if (CurrentPage == LastPage-2)
         {
             CloseDialogue();
         }
@@ -90,7 +90,7 @@ public class TextOrder : MonoBehaviour {
     public void CloseDialogue()
     {
         FirstRead = false;
-        GameObject.Find("Player").GetComponent<NewMovement>().togglefreeze();
+        GameObject.Find("Player").GetComponent<NewMovement>().freezeoff();
         gameObject.SetActive(false);
     }
 }

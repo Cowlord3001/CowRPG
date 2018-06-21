@@ -28,7 +28,7 @@ public class ClassChanger : MonoBehaviour {
         Overworld.SetActive(true);
         //GameObject.Find("ClassTrainer").transform.GetChild(0).GetComponent<Chat>().DialogueControl.SetActive(false);
         GameObject.Find("Trainer_Text").SetActive(false);
-        GameObject.Find("Player").GetComponent<NewMovement>().togglefreeze();
+        GameObject.Find("Player").GetComponent<NewMovement>().freezeoff();
         QuestLog.Class = TutorialPlayer.tag;
         gameObject.SetActive(false);
         Debug.Log("GameObject False");
