@@ -31,7 +31,6 @@ public class GenerateMaze : MonoBehaviour {
 
                 
                 Maze[x,y].transform.parent = transform;
-                Maze[x, y].GetComponent<Tile>().MazeGen = gameObject;
                 Maze[x, y].GetComponent<Tile>().Visited = false;
                 Maze[x,y].name = "Tile_" + x + "" + y;
 
