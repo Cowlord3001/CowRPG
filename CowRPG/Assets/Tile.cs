@@ -12,21 +12,19 @@ public class Tile : MonoBehaviour {
     public Transform[] Walls;
     public Tile[] Neighbor;
     public bool Visited;
-
-    public int x, y;
-    public GameObject MazeGen;
+    
 
     public void setSprite()
     {
         string SS = "";
 
-        if (Walls[0].gameObject.activeSelf == true)
+        if (Walls[(int)Facing.Up].gameObject.activeSelf == true)
             SS = SS + "N";
-        if (Walls[1].gameObject.activeSelf == true)
+        if (Walls[(int)Facing.Right].gameObject.activeSelf == true)
             SS = SS + "E";
-        if (Walls[2].gameObject.activeSelf == true)
+        if (Walls[(int)Facing.Down].gameObject.activeSelf == true)
             SS = SS + "S";
-        if (Walls[3].gameObject.activeSelf == true)
+        if (Walls[(int)Facing.Left].gameObject.activeSelf == true)
             SS = SS + "W";
 
         if(SS == "N")
