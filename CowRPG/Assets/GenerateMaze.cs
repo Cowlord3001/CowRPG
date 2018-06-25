@@ -32,6 +32,7 @@ public class GenerateMaze : MonoBehaviour {
                 
                 Maze[x,y].transform.parent = transform;
                 Maze[x, y].GetComponent<Tile>().MazeGen = gameObject;
+                Maze[x, y].GetComponent<Tile>().Visited = false;
                 Maze[x,y].name = "Tile_" + x + "" + y;
 
                 Debug.Log("Tile_" + x + "" + y + " Instantiated");
@@ -121,18 +122,83 @@ public class GenerateMaze : MonoBehaviour {
 
     void CreateMaze()
     {
-        List<Tile> TileStack;
+        //The depth-first search algorithm of maze generation is frequently implemented using backtracking:
+
+            //1. Make the initial cell the current cell and mark it as visited
+
+            //2. While there are unvisited cells
+                   //1. If the current cell has any neighbours which have not been visited
+                        //1. Choose randomly one of the unvisited neighbours
+                        //2. Push the current cell to the stack
+                        //3. Remove the wall between the current cell and the chosen cell
+                        //4. Make the chosen cell the current cell and mark it as visited
+                   //2. Else if stack is not empty
+                        //1. Pop a cell from the stack
+                        //2. Make it the current cell
+
+        List<Tile> TileStack = new List<Tile>();
+
+        Tile CurrentTile;
+        Tile NextTile;
+        CurrentTile = Maze[0, 0].GetComponent<Tile>();
         
 
+
     }
 
-    void SelectNeighbor()
+    Tile SelectNeighbor(Tile CurTile)
     {
-       
+
+        List<Tile> ViableNextTile = new List<Tile>();
+
+        foreach (Tile T in CurTile.Neighbor)
+        {
+            if(T == null)
+            {
+                //no nothing
+            }
+            else if(T.Visited == false)
+            {
+                ViableNextTile.Add(T);
+            }
+        }
+
+        if (ViableNextTile.Count == 0)
+            return null;
+        else
+        {
+            int i = Random.Range(0, ViableNextTile.Count - 1);
+            return ViableNextTile[i];
+        }
     }
 
-    void LowerWall()
+    void LowerWall(Tile CurTile, Tile NextTile)
     {
+        Vector2 dir = NextTile.transform.position - CurTile.transform.position;
 
+        if( dir.x > 0.1)
+        {
+            CurTile.Walls[(int)Facing.Right].gameObject.SetActive(false);
+            NextTile.Walls[(int)Facing.Left].gameObject.SetActive(false);
+        }
+        else if(dir.y < -.1)
+        {
+            CurTile.Walls[(int)Facing.Down].gameObject.SetActive(false);
+            NextTile.Walls[(int)Facing.Up].gameObject.SetActive(false);
+        }
+        else if (dir.x < -.1)
+        {
+            CurTile.Walls[(int)Facing.Left].gameObject.SetActive(false);
+            NextTile.Walls[(int)Facing.Right].gameObject.SetActive(false);
+        }
+        else if (dir.y > 0.1)
+        {
+            CurTile.Walls[(int)Facing.Up].gameObject.SetActive(false);
+            NextTile.Walls[(int)Facing.Down].gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Error no walls were lowered when they should have been");
+        }
     }
 }

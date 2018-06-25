@@ -15,7 +15,7 @@ public class Tile : MonoBehaviour {
 
     public int x, y;
     public GameObject MazeGen;
-	// Update is called once per frame
+
 	void Start () {
 		
 	}
