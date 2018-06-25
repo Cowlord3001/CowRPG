@@ -622,6 +622,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b946e6c7f7e4f51469cde7e23c3e4df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Vertical: {fileID: 21300000, guid: a0413f9ef4e4915439e6664c1a1499b6, type: 3}
+  Horizontal: {fileID: 21300000, guid: bbb246f0507823e4faa04f9f5aeba5a0, type: 3}
+  DRelbow: {fileID: 21300000, guid: d0df90afa07115a4d9c68dbc7d907095, type: 3}
+  DLelbow: {fileID: 21300000, guid: e353ac6665c51da48b2a66c3d542b506, type: 3}
+  URelbow: {fileID: 21300000, guid: 9e3382df5721ee34f86ed19dc64907b1, type: 3}
+  ULelbow: {fileID: 21300000, guid: 0dad08aba80039b479752532996931f5, type: 3}
+  Left3: {fileID: 21300000, guid: 72bb227b2fa740b4b8fb346da6b9190a, type: 3}
+  Up3: {fileID: 21300000, guid: 58140e44d2d0e294fb421b283df6e80b, type: 3}
+  Down3: {fileID: 21300000, guid: 883c9c8c5e030d442bec1691f54c58d1, type: 3}
+  Right3: {fileID: 21300000, guid: f0d96503c1e83d64ab74cbcc96dc779b, type: 3}
+  CrossRoad: {fileID: 21300000, guid: abe8513cc3dd0c0439ac1b6402ace98d, type: 3}
   Walls:
   - {fileID: 4317699227842808}
   - {fileID: 4840299155686146}

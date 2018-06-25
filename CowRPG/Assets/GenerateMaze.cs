@@ -35,8 +35,6 @@ public class GenerateMaze : MonoBehaviour {
                 Maze[x, y].GetComponent<Tile>().Visited = false;
                 Maze[x,y].name = "Tile_" + x + "" + y;
 
-                Debug.Log("Tile_" + x + "" + y + " Instantiated");
-
             }
         }
 
@@ -137,6 +135,7 @@ public class GenerateMaze : MonoBehaviour {
                         //2. Make it the current cell
 
         List<Tile> TileStack = new List<Tile>();
+        
 
         Tile CurrentTile;
         Tile NextTile;
@@ -168,6 +167,7 @@ public class GenerateMaze : MonoBehaviour {
         else
         {
             int i = Random.Range(0, ViableNextTile.Count - 1);
+            Debug.Log("Random Integer In Choosing Neihbor: " + i);
             return ViableNextTile[i];
         }
     }
