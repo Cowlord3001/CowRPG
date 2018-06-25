@@ -38,6 +38,7 @@ public class GenerateMaze : MonoBehaviour {
         }
 
         LinkNeighbors();
+        CreateMaze();
 	}
 	
 
@@ -137,12 +138,95 @@ public class GenerateMaze : MonoBehaviour {
         
 
         Tile CurrentTile;
-        Tile NextTile;
-        CurrentTile = Maze[0, 0].GetComponent<Tile>();
-        
+        int Count;
 
+        Count = 1;
+        CurrentTile = Maze[0, 0].GetComponent<Tile>();
+        CurrentTile.GetComponent<Tile>().Visited = true;
+
+        while (Width*Height > Count)
+        {
+            Tile NextTile = SelectNeighbor(CurrentTile);
+            if (NextTile != null)
+            {
+                TileStack.Add(CurrentTile);
+                LowerWall(CurrentTile, NextTile);
+                CurrentTile = NextTile;
+                CurrentTile.Visited = true;
+                Count++;
+            }
+            else if (TileStack.Count != 0)
+            {
+                CurrentTile = TileStack[TileStack.Count - 1];
+                TileStack.RemoveAt(TileStack.Count - 1);
+            }
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            int x = Random.Range(1, Width - 1);
+            int y = Random.Range(1, Height - 1);
+
+            List<Tile> ViableNextTile = new List<Tile>();
+
+            foreach (Tile T in Maze[x,y].GetComponent<Tile>().Neighbor)
+            {
+                if (T == null)
+                {
+                    //no nothing
+                }
+                else if(CheckWall(Maze[x, y].GetComponent<Tile>(), T) == true)
+                {
+                    ViableNextTile.Add(T);
+                }
+            }
+
+            if (ViableNextTile.Count == 0)
+                break;
+            else
+            {
+                int z = Random.Range(0, ViableNextTile.Count);
+                LowerWall(Maze[x, y].GetComponent<Tile>(), Maze[x, y].GetComponent<Tile>().Neighbor[z]);
+            }
+
+        }
+
+        for (int i = 0; i < Width; i++)
+        {
+            for (int j = 0; j < Height; j++)
+            {
+                Maze[i, j].GetComponent<Tile>().setSprite();
+            }
+        }
 
     }
+
+    bool CheckWall(Tile CurTile, Tile NextTile)
+    {
+        Vector2 dir = NextTile.transform.position - CurTile.transform.position;
+
+        if (dir.x > 0.1 && CurTile.Walls[(int)Facing.Right].gameObject.activeSelf)
+        {
+            return true;
+        }
+        else if (dir.y < -.1 && CurTile.Walls[(int)Facing.Down].gameObject.activeSelf)
+        {
+            return true;
+        }
+        else if (dir.x < -.1 && CurTile.Walls[(int)Facing.Left].gameObject.activeSelf)
+        {
+            return true;
+        }
+        else if (dir.y > 0.1 && CurTile.Walls[(int)Facing.Up].gameObject.activeSelf)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 
     Tile SelectNeighbor(Tile CurTile)
     {
@@ -165,7 +249,7 @@ public class GenerateMaze : MonoBehaviour {
             return null;
         else
         {
-            int i = Random.Range(0, ViableNextTile.Count - 1);
+            int i = Random.Range(0, ViableNextTile.Count);
             Debug.Log("Random Integer In Choosing Neihbor: " + i);
             return ViableNextTile[i];
         }
