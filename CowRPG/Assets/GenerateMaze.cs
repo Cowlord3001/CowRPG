@@ -142,6 +142,7 @@ public class GenerateMaze : MonoBehaviour {
 
         Count = 1;
         CurrentTile = Maze[0, 0].GetComponent<Tile>();
+        Maze[0, 0].GetComponent<Tile>().Walls[3].gameObject.SetActive(false);
         CurrentTile.GetComponent<Tile>().Visited = true;
 
         while (Width*Height > Count)
@@ -189,6 +190,20 @@ public class GenerateMaze : MonoBehaviour {
                 LowerWall(Maze[x, y].GetComponent<Tile>(), Maze[x, y].GetComponent<Tile>().Neighbor[z]);
             }
 
+        }
+
+        int m = Random.Range(1, 3);
+        
+
+        if(m == 1)
+        {
+            int n = Random.Range(Width / 2, Width);
+            Maze[n, Height - 1].GetComponent<Tile>().Walls[0].gameObject.SetActive(false);
+        }
+        else
+        {
+            int n = Random.Range(Height / 2, Height);
+            Maze[Width - 1, n].GetComponent<Tile>().Walls[1].gameObject.SetActive(false);
         }
 
         for (int i = 0; i < Width; i++)

@@ -10,6 +10,7 @@ public class QuestLog : MonoBehaviour {
     public GameObject[] Arenas;
 
     public GameObject Overworld;
+    public GameObject TownExit;
 
     [SerializeField]
     public GameObject[] MayorText;
@@ -44,5 +45,6 @@ public class QuestLog : MonoBehaviour {
         Mayor.GetComponent<Chat>().DialogueControl = MayorText[1];
         Trainer.GetComponent<Chat>().DialogueControl = TrainerText[1];
         Guard.GetComponent<Chat>().DialogueControl = GuardText[1];
+        TownExit.gameObject.SetActive(true);
     }
 }
