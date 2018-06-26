@@ -12,6 +12,10 @@ public class InEnemyLook : MonoBehaviour
     void Start()
     {
         Player = GameObject.Find("Player");
+        if(Player == null)
+        {
+            Player = GameObject.Find("TPlayer");
+        }
     }
 
     // Update is called once per frame
