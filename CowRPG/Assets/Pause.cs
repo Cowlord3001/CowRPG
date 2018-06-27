@@ -17,10 +17,15 @@ public class Pause : MonoBehaviour {
         {
             Debug.Log(Time.timeScale);
             if(Time.timeScale > 0.5f)
+            {
+                PauseScreen.SetActive(true);
                 Time.timeScale = 0.0f;
-
-            if (Time.timeScale < 0.5f)
+            }
+            else if (Time.timeScale < 0.5f)
+            {
+                PauseScreen.SetActive(false);
                 Time.timeScale = 1.0f;
+            }
         }
 	}
 }
