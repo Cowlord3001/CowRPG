@@ -14,7 +14,7 @@ public class Ranged : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Player = GameObject.Find("Player");
+        Player = GameObject.Find("APlayer");
         MyBody = GetComponent<Rigidbody2D>();
     }
 

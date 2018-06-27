@@ -14,7 +14,7 @@ public class InEnemyLook : MonoBehaviour
         Player = GameObject.Find("Player");
         if(Player == null)
         {
-            Player = GameObject.Find("TPlayer");
+            Player = GameObject.Find("APlayer");
         }
     }
 
