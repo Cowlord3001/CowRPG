@@ -28,7 +28,7 @@ public class QuestLog : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        Class = "Ranger";
 	}
 	
 	// Update is called once per frame

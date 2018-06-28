@@ -11,11 +11,12 @@ public class EnemyFiring : MonoBehaviour
     public string Type;
     public float BurstCooldown;
     public int BurstNumber;
+    int level;
 
     // Use this for initialization
     void Start()
     {
-
+        level = GetComponent<EnemyHealth>().lvl;
     }
 
     // Update is called once per frame
@@ -41,7 +42,8 @@ public class EnemyFiring : MonoBehaviour
 
     void Fire()
     {
-        Instantiate(Bullet, transform.position, transform.rotation);
+        GameObject bullet = Instantiate(Bullet, transform.position, transform.rotation);
+        bullet.GetComponent<EBullet>().Damage = level + 1;
         Timestamp = Time.time;
     }
 

@@ -10,8 +10,9 @@ public class RandomEncounters : MonoBehaviour {
 
 	// Use this for initialization
 	void OnEnable () {
+        CancelInvoke("Encounter");
         InvokeRepeating("Encounter", EncounterRate / 2, EncounterRate/2);
-	}
+    }
 
     void OnDisable()
     {

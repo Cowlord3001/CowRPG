@@ -43,7 +43,6 @@ public class PlayerHealth : MonoBehaviour
             ApplyPDMG(1);
             GameObject GO = Instantiate(Contact, CPoint, Quaternion.identity);
             Destroy(GO, 2);
-            //fix garbagio from this functiony thing ^^^
 
             GetComponent<Rigidbody2D>().AddForce(Push.normalized * CScale);
         }

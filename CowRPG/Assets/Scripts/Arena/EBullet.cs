@@ -32,5 +32,12 @@ public class EBullet : MonoBehaviour
             Destroy(GO, 2);
             Destroy(gameObject);
         }
+
+        else if (collision.gameObject.tag == "Wall")
+        {
+            GameObject GO = Instantiate(Death, transform.position, Quaternion.identity);
+            Destroy(GO, 2);
+            Destroy(gameObject);
+        }
     }
 }
