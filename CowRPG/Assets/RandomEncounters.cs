@@ -10,12 +10,13 @@ public class RandomEncounters : MonoBehaviour {
 
 	// Use this for initialization
 	void OnEnable () {
-        InvokeRepeating("Encounter", 0, EncounterRate/2);
+        InvokeRepeating("Encounter", EncounterRate / 2, EncounterRate/2);
 	}
 
     void OnDisable()
     {
-        CancelInvoke();
+        Debug.Log("Overworld Disabled by RandomEncounters");
+        CancelInvoke("Encounter");
     }
 
     // Update is called once per frame
@@ -27,9 +28,11 @@ public class RandomEncounters : MonoBehaviour {
     {
         int Rand = Random.Range(0, 20);
         int RandAr = Random.Range(0, Arenas.Length);
+        Debug.Log("Chance for a Fight Triggered");
         if(Rand < 10)
         {
             Arenas[RandAr].gameObject.SetActive(true);
+            Debug.Log("Arena Enabled by RandomEncounters");
             Overworld.gameObject.SetActive(false);
         }
 

@@ -15,7 +15,6 @@ public class Pause : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log(Time.timeScale);
             if(Time.timeScale > 0.5f)
             {
                 PauseScreen.SetActive(true);

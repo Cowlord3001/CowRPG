@@ -39,6 +39,7 @@ public class QuestLog : MonoBehaviour {
     public void ChooseClass(string Class)
     {
         TutorialPlayer.transform.GetChild(0).tag = Class;
+        QuestLog.Class = Class;
         Arenas[0].SetActive(true);
         Overworld.SetActive(false);
         //update dialogue

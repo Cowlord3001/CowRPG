@@ -29,7 +29,7 @@ public class ClassChanger : MonoBehaviour {
         //GameObject.Find("ClassTrainer").transform.GetChild(0).GetComponent<Chat>().DialogueControl.SetActive(false);
         GameObject.Find("Trainer_Text").SetActive(false);
         GameObject.Find("Player").GetComponent<NewMovement>().freezeoff();
-        QuestLog.Class = TutorialPlayer.tag;
+        QuestLog.Class = TutorialPlayer.transform.GetChild(0).tag;
         gameObject.SetActive(false);
         Debug.Log("GameObject False");
     }

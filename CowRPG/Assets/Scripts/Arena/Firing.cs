@@ -75,8 +75,7 @@ public class Firing : MonoBehaviour {
         {
             GO.transform.position = transform.position + transform.right;
             GO.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
-            Debug.Log(GO.transform.localScale);
+            
             if (GO.transform.localScale.x < 5)
             {
                 GO.transform.localScale = GO.transform.localScale + Scale * Time.deltaTime * .5f;

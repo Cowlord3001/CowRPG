@@ -265,7 +265,6 @@ public class GenerateMaze : MonoBehaviour {
         else
         {
             int i = Random.Range(0, ViableNextTile.Count);
-            Debug.Log("Random Integer In Choosing Neihbor: " + i);
             return ViableNextTile[i];
         }
     }

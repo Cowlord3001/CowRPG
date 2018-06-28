@@ -30,8 +30,7 @@ public class Tile : MonoBehaviour {
             SS = SS + "S";
         if (Walls[(int)Facing.Left].gameObject.activeSelf == false)
             SS = SS + "W";
-
-        Debug.Log("The Tile " + gameObject.name + " Should have a " + SS + " tile.");
+        
 
         if(SS == "N")
         {
