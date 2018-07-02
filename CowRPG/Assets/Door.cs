@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Door : MonoBehaviour {
 
@@ -22,6 +23,7 @@ public class Door : MonoBehaviour {
     {
         Destination.SetActive(true);
         collision.gameObject.transform.position = ExitDoor.transform.position;
+        GameObject.Find("CurrentArea").GetComponent<Text>().text = Destination.name;
         Entrance.SetActive(false);
     }
 }

@@ -6,18 +6,10 @@ public class Chat : MonoBehaviour {
 
     public GameObject DialogueControl;
     bool Chatting;
-    //{
-    //    get {
-    //        return Chatting;
-    //    }
-    //    set {
-    //        if(Chatting == true && Event == true)
-    //        {
-    //            OverWorld_Controller.LoadArena();
-    //        }
-    //    }
-    //}
+  
     public bool Event;
+
+    public QuestLog QuestLog;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +27,12 @@ public class Chat : MonoBehaviour {
         {
            Invoke("StartDialogue", .05f);
            collision.gameObject.SendMessage("freezeon");
+            if (QuestLog.Progress == 0 && gameObject.transform.parent.name == "Mayor")
+            {
+                
+                QuestLog.PostMayorTalk();
+                QuestLog.Progress = 1;
+            }
         }
         else if (DialogueControl.activeSelf == false)
         {

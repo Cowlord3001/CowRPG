@@ -1,19 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
 
-    public int hp;
+    int hp;
+    public int HPMAX;
     public GameObject Death;
     public GameObject Contact;
     public float CScale;
 
-    // Use this for initialization
-    void Start()
-    {
+    Slider HealthBar;
 
+    // Use this for initialization
+    void OnEnable()
+    {
+        HealthBar = GameObject.Find("CurrentHP").GetComponent<Slider>();
+        hp = HPMAX;
+        if(HealthBar != null)
+        {
+            HealthBar.maxValue = HPMAX;
+            HealthBar.value = hp;
+        }
+        else
+        {
+            Debug.Log("No Slider Found in Arena Scene");
+        }
     }
 
     // Update is called once per frame
@@ -25,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
     void ApplyPDMG(int DMG)
     {
         hp = hp - DMG;
+        HealthBar.value = hp;
         if (hp <= 0)
         {
             GameObject GO = Instantiate(Death, transform.position, Quaternion.identity);

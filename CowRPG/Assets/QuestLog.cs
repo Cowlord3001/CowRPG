@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestLog : MonoBehaviour {
 
@@ -24,11 +25,15 @@ public class QuestLog : MonoBehaviour {
     public GameObject[] GuardText;
     public GameObject Guard;
 
+    public Text CurrentQuest;
+
     public static string Class;
+    public static int Progress;
 
 	// Use this for initialization
 	void Start () {
         Class = "Ranger";
+        Progress = 0;
 	}
 	
 	// Update is called once per frame
@@ -36,6 +41,14 @@ public class QuestLog : MonoBehaviour {
 		
 	}
 
+    //0
+    public void PostMayorTalk()
+    {
+        CurrentQuest.text = "-Talk to the Class Trainer and Pick a Class";
+        Progress = 1;
+    }
+
+    //1
     public void ChooseClass(string Class)
     {
         TutorialPlayer.transform.GetChild(0).tag = Class;
@@ -47,5 +60,7 @@ public class QuestLog : MonoBehaviour {
         Trainer.GetComponent<Chat>().DialogueControl = TrainerText[1];
         Guard.GetComponent<Chat>().DialogueControl = GuardText[1];
         TownExit.gameObject.SetActive(true);
+        CurrentQuest.text = "-Find the <B>Monster</B> in the Forest Depths";
+        Progress = 2;
     }
 }
