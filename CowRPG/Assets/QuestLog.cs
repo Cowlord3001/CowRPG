@@ -29,11 +29,15 @@ public class QuestLog : MonoBehaviour {
 
     public static string Class;
     public static int Progress;
+    static int EXP;
+    static int Level;
 
 	// Use this for initialization
 	void Start () {
         Class = "Ranger";
         Progress = 0;
+        EXP = 0;
+        Level = 1;
 	}
 	
 	// Update is called once per frame
@@ -62,5 +66,27 @@ public class QuestLog : MonoBehaviour {
         TownExit.gameObject.SetActive(true);
         CurrentQuest.text = "-Find the <B>Monster</B> in the Forest Depths";
         Progress = 2;
+    }
+
+    public static void AddEXP(int n)
+    {
+        EXP = EXP + n;
+        Debug.Log("Current EXP = " + EXP);
+        if(EXP >= 500 && EXP < 1100)
+        {
+            Level = 2;
+        }
+        else if (EXP >= 1100 && EXP < 2700)
+        {
+            Level = 3;
+        }
+        else if (EXP >= 2700 && EXP < 6500)
+        {
+            Level = 4;
+        }
+        else if (EXP >= 6500)
+        {
+            Level = 5;
+        }
     }
 }

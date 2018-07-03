@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour {
 
     public int hp;
     public int lvl;
+    public int EXP;
     public GameObject Death;
     TextMesh DisplayHP;
 
@@ -16,6 +17,8 @@ public class EnemyHealth : MonoBehaviour {
         {
             int x = Random.Range(10, 20);
             hp = hp + x;
+            int y = Random.Range(2, 7);
+            EXP = EXP + y;
         }
 
         DisplayHP = GetComponentInChildren<TextMesh>();
@@ -35,6 +38,7 @@ public class EnemyHealth : MonoBehaviour {
         {
             GameObject GO = Instantiate(Death, transform.position, Quaternion.identity);
             Destroy(GO, 2);
+            QuestLog.AddEXP(EXP);
             Destroy(gameObject);
         }
         

@@ -218,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 50
   lvl: 0
+  EXP: 15
   Death: {fileID: 1159300245256592, guid: 5afe2c15ce061a14792899f0521c77e9, type: 2}
 --- !u!212 &212222256052132940
 SpriteRenderer:

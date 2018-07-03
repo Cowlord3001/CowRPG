@@ -1,10 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewMovement : MonoBehaviour {
 
     public float Speed;
+    float Stamina;
+    public float MaxStam;
+    bool Sprinting;
+    float StaminaRechargeRate;
+    public Slider StamBar;
     Rigidbody2D MyBody;
     bool freeze;
 
@@ -12,7 +18,12 @@ public class NewMovement : MonoBehaviour {
 	void Start () {
         MyBody = GetComponent<Rigidbody2D>();
         freeze = false;
-	}
+        Sprinting = false;
+        StaminaRechargeRate = 1.5f;
+        Stamina = MaxStam;
+        StamBar.maxValue = MaxStam;
+        StamBar.value = MaxStam;
+    }
 
     public void freezeoff()
     {
@@ -26,7 +37,40 @@ public class NewMovement : MonoBehaviour {
 
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Sprinting == false && Stamina > 0)
+        {
+            Speed = Speed * 3;
+            Sprinting = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && Sprinting == true || Stamina <= 0 && Sprinting == true)
+        {
+            Speed = Speed/3;
+            Sprinting = false;
+        }
+
+        if(Sprinting == true && MyBody.velocity.magnitude > .01)
+        {
+            if(Stamina > 0)
+            {
+                Stamina = Stamina - Time.deltaTime;
+            }
+        }
+        else
+        {
+            if(Stamina < MaxStam)
+            {
+                Stamina = Stamina + Time.deltaTime * StaminaRechargeRate;
+            }
+        }
+
+        StamBar.value = Stamina;
+        Walk();
+    }
+
+    void Walk()
+    {
         float x = Input.GetAxis("Horizontal");
         if (Input.GetKey(KeyCode.A))
         {

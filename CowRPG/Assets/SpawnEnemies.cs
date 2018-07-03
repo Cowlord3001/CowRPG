@@ -19,7 +19,7 @@ public class SpawnEnemies : MonoBehaviour {
 	void OnEnable ()
     {
         loading = false;
-        int EnemyNum = Random.Range(1, EnemyMax);
+        int EnemyNum = Random.Range(1, EnemyMax + 1);
         Player = GameObject.Find("APlayer");
 
         Player.transform.position = (Vector2)transform.GetChild(0).transform.position + new Vector2(-Width / 2, 0);
