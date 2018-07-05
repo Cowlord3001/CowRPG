@@ -29,9 +29,12 @@ public class Chat : MonoBehaviour {
            collision.gameObject.SendMessage("freezeon");
             if (QuestLog.Progress == 0 && gameObject.transform.parent.name == "Mayor")
             {
-                
                 QuestLog.PostMayorTalk();
                 QuestLog.Progress = 1;
+            }
+            if(gameObject.transform.parent.name == "Switch")
+            {
+                gameObject.GetComponentInParent<Switch>().SwitchOn();
             }
         }
         else if (DialogueControl.activeSelf == false)

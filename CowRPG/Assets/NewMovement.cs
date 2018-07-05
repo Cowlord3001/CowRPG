@@ -43,11 +43,17 @@ public class NewMovement : MonoBehaviour {
         {
             Speed = Speed * 3;
             Sprinting = true;
+            Image[] StamBarImages = StamBar.GetComponentsInChildren<Image>();
+            StamBarImages[0].color = new Color(0, 0.4823f, 0.4705f, 1);
+            StamBarImages[1].color = new Color(0, 1, 0.6274f, 1);
         }
         else if (Input.GetKeyDown(KeyCode.LeftShift) && Sprinting == true || Stamina <= 0 && Sprinting == true)
         {
             Speed = Speed/3;
             Sprinting = false;
+            Image[] StamBarImages = StamBar.GetComponentsInChildren<Image>();
+            StamBarImages[0].color = new Color(0, 0.4823f, 0.4705f, 0);
+            StamBarImages[1].color = new Color(0, 1, 0.6274f, 0);
         }
 
         if(Sprinting == true && MyBody.velocity.magnitude > .01)

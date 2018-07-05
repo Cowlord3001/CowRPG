@@ -10,6 +10,8 @@ public class Chase : MonoBehaviour {
     //GameObject Player;
     Rigidbody2D MyBody;
 
+    bool Dashing;
+
     // Use this for initialization
     void Start() {
         //Player = GameObject.Find("Player");
@@ -19,14 +21,15 @@ public class Chase : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        MyBody.AddForce(transform.right * Acceleration);
-
-        float CurrentSpeed = MyBody.velocity.magnitude;
-
-        if(CurrentSpeed > MaxSpeed)
+	void Update ()
+    {
+        if (GetComponent<EnemyHealth>().lvl == 0 || GetComponent<EnemyHealth>().lvl == 1)
         {
-            MyBody.velocity = MaxSpeed * MyBody.velocity.normalized;
+            NormalMovement();
+        }
+        else if(GetComponent<EnemyHealth>().lvl == 2 || gameObject.name == "ChaserMiniboss")
+        {
+            DashMovement();
         }
 	}
 
@@ -36,5 +39,44 @@ public class Chase : MonoBehaviour {
         {
             collision.gameObject.SendMessage("ApplyPDMG", Damage);
         }
+    }
+
+    void NormalMovement()
+    {
+        MyBody.AddForce(transform.right * Acceleration);
+
+        float CurrentSpeed = MyBody.velocity.magnitude;
+
+        if (CurrentSpeed > MaxSpeed)
+        {
+            MyBody.velocity = MaxSpeed * MyBody.velocity.normalized;
+        }
+    }
+
+    void DashMovement()
+    {
+        if(Dashing == false)
+        {
+            NormalMovement();
+        }
+        else
+        {
+
+            Acceleration = 0;
+            for (int i = 1; i < 4; i++)
+            {
+                Invoke("Dash", i * 2);
+            }
+        }
+    }
+
+    void Dash()
+    {
+        MyBody.velocity = transform.right * (MaxSpeed * 5);
+    }
+
+    void ToggleDash()
+    {
+        Dashing = !Dashing;
     }
 }
