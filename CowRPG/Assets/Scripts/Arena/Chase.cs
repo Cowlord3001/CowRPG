@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Chase : MonoBehaviour {
 
-    public float Acceleration;
+    float Acceleration;
+    public float MaxAccel;
     public float MaxSpeed;
     public int Damage;
     //GameObject Player;
     Rigidbody2D MyBody;
+
+    float x;
+    float DashTime;
 
     bool Dashing;
 
@@ -18,7 +22,13 @@ public class Chase : MonoBehaviour {
         MyBody = GetComponent<Rigidbody2D>();
 
         Damage = (GetComponent<EnemyHealth>().lvl + 1) * Damage;
-	}
+        Acceleration = MaxAccel;
+        Dashing = false;
+
+        DashTime = 0;
+        x = Random.Range(5, 11);
+
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -57,26 +67,50 @@ public class Chase : MonoBehaviour {
     {
         if(Dashing == false)
         {
-            NormalMovement();
+            if (Acceleration > .1)
+            {
+                NormalMovement();
+            }
+
+            DashTime = DashTime + Time.deltaTime;
+
+            if(DashTime > x)
+            {
+                ToggleDash();
+            }
         }
         else
         {
-
-            Acceleration = 0;
             for (int i = 1; i < 4; i++)
             {
                 Invoke("Dash", i * 2);
             }
+            Dashing = false;
         }
     }
 
     void Dash()
     {
-        MyBody.velocity = transform.right * (MaxSpeed * 5);
+        MyBody.velocity = transform.right * (MaxSpeed * 10);
     }
 
     void ToggleDash()
     {
-        Dashing = !Dashing;
+        if (Acceleration < .1)
+        {
+            Debug.Log("Dash Toggled False");
+            Acceleration = MaxAccel;
+            Dashing = false;
+            x = Random.Range(5, 11);
+            DashTime = 0;
+        }
+        else
+        {
+            Debug.Log("Dash Toggled True");
+            Acceleration = 0;
+            Dashing = true;
+            x = Random.Range(5, 11);
+            DashTime = 0;
+        }
     }
 }

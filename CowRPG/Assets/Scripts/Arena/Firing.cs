@@ -58,7 +58,7 @@ public class Firing : MonoBehaviour {
         {
             Charging = false;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Timestamp + ROF * 8 < Time.time)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Timestamp + ROF * 10 < Time.time)
         {
             GO = Instantiate(SpellBullet, transform.position, transform.parent.transform.rotation);
             Timestamp = Time.time;
@@ -82,7 +82,7 @@ public class Firing : MonoBehaviour {
                 ParticleSystem.MainModule main;
                 main = GO.GetComponent<Bullet>().Death.GetComponent<ParticleSystem>().main;
                 main.startSize = GO.transform.localScale.x * .06f;
-                GO.GetComponent<Bullet>().Damage = 10 + (150 / 8) * (Time.time - Timestamp);
+                GO.GetComponent<Bullet>().Damage = 3 + (150 / 8) * (Time.time - Timestamp);
             }
         }
     }

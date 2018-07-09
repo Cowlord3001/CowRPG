@@ -69,8 +69,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1291928245045210}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.4, y: -30.7, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_LocalPosition: {x: 297.2, y: -280.7, z: 0}
+  m_LocalScale: {x: 28, y: 28, z: 1}
   m_Children:
   - {fileID: 4121787019071434}
   m_Father: {fileID: 0}
@@ -154,7 +154,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.14, y: 0.14}
   m_EdgeRadius: 0
 --- !u!102 &102149354212062772
 TextMesh:
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fec50558f848b04795eb73371e3834c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rotation: 5
+  Rotation: 8
 --- !u!114 &114670860572710082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,8 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248c06dd74fef11488d28811c8357c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 50
-  lvl: 0
+  hp: 600
+  lvl: 2
   EXP: 20
   Death: {fileID: 1159300245256592, guid: 5afe2c15ce061a14792899f0521c77e9, type: 2}
 --- !u!114 &114929288760764938
@@ -215,9 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f20bd1cc4eb9994c924c8f7e349e242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: 20
+  MaxAccel: 20
   MaxSpeed: 5
-  Damage: 2
+  Damage: 5
 --- !u!212 &212905131120630862
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -254,7 +254,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.9150943, g: 0.2747704, b: 0.12517802, a: 1}
+  m_Color: {r: 0.6037736, g: 0.15802793, b: 0.054111768, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
