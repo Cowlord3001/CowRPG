@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1295192933409728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -236.27078, y: -65.20746, z: 0}
+  m_LocalPosition: {x: 299.1, y: -281.7, z: 0}
   m_LocalScale: {x: 14, y: 14, z: 1}
   m_Children:
   - {fileID: 4087651395238360}
@@ -189,9 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931723c3a2c20b2409cdda35978ddeb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: 10
-  MaxSpeed: 5
-  PDist: 5
+  Acceleration: 15
+  MaxSpeed: 7
+  PDist: 10
 --- !u!114 &114223979317187818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fec50558f848b04795eb73371e3834c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rotation: 5
+  Rotation: 7
 --- !u!114 &114753718537834444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,10 +216,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 1152822650491740, guid: af6e031f1d412d24ab84ee1a94692435, type: 2}
-  ROF: 0.5
-  Type: Constant
+  ROF: 0.05
+  Type: RangerMiniboss
   BurstCooldown: 1
   BurstNumber: 5
+  Accuracy: 30
 --- !u!114 &114891486147388318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,9 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248c06dd74fef11488d28811c8357c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 25
-  lvl: 0
-  EXP: 19
+  hp: 600
+  lvl: 2
+  EXP: 190
   Death: {fileID: 1159300245256592, guid: 5afe2c15ce061a14792899f0521c77e9, type: 2}
 --- !u!212 &212858063906509836
 SpriteRenderer:

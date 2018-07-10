@@ -9,6 +9,7 @@ TagManager:
   - Fighter
   - Spellcaster
   - Wall
+  - EnemyNPC
   layers:
   - Default
   - TransparentFX

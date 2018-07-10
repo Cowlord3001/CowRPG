@@ -11,12 +11,23 @@ public class EnemyFiring : MonoBehaviour
     public string Type;
     public float BurstCooldown;
     public int BurstNumber;
+    public float Accuracy;
+
+    float Timer;
+    int x;
+    bool Frozen;
+
+    public int SpreadShots;
+    public float MaxSpreadAngle;
+
     int level;
 
     // Use this for initialization
     void Start()
     {
         level = GetComponent<EnemyHealth>().lvl;
+        Timer = 0;
+        x = Random.Range(5, 11);
     }
 
     // Update is called once per frame
@@ -30,6 +41,10 @@ public class EnemyFiring : MonoBehaviour
         {
             ConstantFire();
         }
+        else if(Type == "RangerMiniboss")
+        {
+            RangerMinibossControl();
+        }
     }
 
     void ConstantFire()
@@ -42,8 +57,23 @@ public class EnemyFiring : MonoBehaviour
 
     void Fire()
     {
-        GameObject bullet = Instantiate(Bullet, transform.position, transform.rotation);
+        float SpreadAngle = Random.Range(-Accuracy, Accuracy);
+
+        GameObject bullet = Instantiate(Bullet, transform.position, transform.rotation*Quaternion.AngleAxis(SpreadAngle,Vector3.forward));
         bullet.GetComponent<EBullet>().Damage = level + 1;
+        Timestamp = Time.time;
+    }
+
+    void SpreadFire()
+    {
+        float SpreadAngle = MaxSpreadAngle / SpreadShots;
+
+        for (int i = -SpreadShots/2; i < SpreadShots/2; i++)
+        {
+            GameObject bullet = Instantiate(Bullet, transform.position, transform.rotation * Quaternion.AngleAxis(SpreadAngle*i, Vector3.forward));
+            bullet.GetComponent<EBullet>().Damage = level + 1;
+        }
+
         Timestamp = Time.time;
     }
 
@@ -53,9 +83,54 @@ public class EnemyFiring : MonoBehaviour
         {
             for (int i = 0; i < BurstNumber; i++)
             {
-                Invoke("Fire", ROF*i);
+                if (name == "Warper" && level >= 2 || name == "WarperMiniboss")
+                {
+                    Invoke("SpreadFire", ROF * i);
+                }
+                else
+                {
+                    Invoke("Fire", ROF * i);
+                }
             }
         }
+    }
+
+    void RangerMinibossControl()
+    {
+        Timer = Timer + Time.deltaTime;
+        if(Timer > x)
+        {
+            if(Frozen == true)
+            {
+                UnfreezePos();
+            }
+            else
+            {
+                FreezePos();
+            }
+        }
+
+        ConstantFire();
+    }
+
+    void FreezePos()
+    {
+        Frozen = true;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        x = Random.Range(5, 11);
+        Timer = 0;
+        ROF = ROF / 12;
+        Accuracy = Accuracy / 1.5f;
+    }
+
+    void UnfreezePos()
+    {
+        Frozen = false;
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        x = Random.Range(5, 11);
+        Timer = 0;
+        ROF = ROF * 12;
+        Accuracy = Accuracy * 1.5f;
     }
 }
 
