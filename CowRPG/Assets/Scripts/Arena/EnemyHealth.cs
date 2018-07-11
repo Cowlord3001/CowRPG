@@ -39,6 +39,10 @@ public class EnemyHealth : MonoBehaviour {
             GameObject GO = Instantiate(Death, transform.position, Quaternion.identity);
             Destroy(GO, 2);
             QuestLog.AddEXP(EXP);
+            if(gameObject.name == "Miniboss 1" || gameObject.name == "Miniboss 2" || gameObject.name == "Miniboss 3")
+            {
+                QuestLog.ForestMinibossCounter();
+            }
             Destroy(gameObject);
         }
         

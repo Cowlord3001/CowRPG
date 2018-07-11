@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuestLog : MonoBehaviour {
 
-    public GameObject Player;
+    public static GameObject Player;
     public GameObject ArenaPlayer;
     public GameObject TutorialPlayer;
     public GameObject[] Arenas;
@@ -32,12 +32,15 @@ public class QuestLog : MonoBehaviour {
     static int EXP;
     static int Level;
 
+    static int ForestMinibossCount;
+
 	// Use this for initialization
 	void Start () {
         Class = "Ranger";
         Progress = 0;
         EXP = 0;
         Level = 1;
+        ForestMinibossCount = 0;
 	}
 	
 	// Update is called once per frame
@@ -88,5 +91,35 @@ public class QuestLog : MonoBehaviour {
         {
             Level = 5;
         }
+    }
+
+    public static IEnumerator ForestMinibossCounter()
+    {
+        ForestMinibossCount++;
+        if(ForestMinibossCount >= 3)
+        {
+            yield return new WaitForSeconds(2);
+
+            GameObject GO = GameObject.Find("Wall (93)");
+            Camera.main.transform.position = GO.transform.position;
+
+            yield return new WaitForSeconds(2);
+                
+            GameObject.Find("Wall (93)").SetActive(false);
+            GameObject.Find("Wall(94)").SetActive(false);
+
+            yield return new WaitForSeconds(2);
+
+            Camera.main.transform.position = Player.transform.position;
+
+            yield return new WaitForSeconds(2);
+        }
+    }
+
+    int CameraMove(Vector2 Pos)
+    {
+        Camera.main.transform.position = Pos;
+
+        return 1;
     }
 }
