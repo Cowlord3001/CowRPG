@@ -41,11 +41,12 @@ public class QuestLog : MonoBehaviour {
         EXP = 0;
         Level = 1;
         ForestMinibossCount = 0;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        Player = GameObject.Find("Player");
+    }
+
+    // Update is called once per frame
+    void Update () {
+        //Idklol();
 	}
 
     //0
@@ -93,26 +94,69 @@ public class QuestLog : MonoBehaviour {
         }
     }
 
-    public static IEnumerator ForestMinibossCounter()
+    public void MiniBossHelper()
+    {
+        StartCoroutine(ForestMinibossCounter());
+    }
+
+    //void Idklol()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        ForestMinibossCount = 5;
+    //        MiniBossHelper();
+    //    }
+    //}
+
+    IEnumerator ForestMinibossCounter()
     {
         ForestMinibossCount++;
+        //Debug.Log(ForestMinibossCount);
         if(ForestMinibossCount >= 3)
         {
+            //Debug.Log("Function Run Waiting for 4 seconds");
+            yield return new WaitForSeconds(4);
+
+            //Debug.Log("Freeze the player in overworld and pan camera to wall");
+            //Debug.Log("My Camera is " + Camera.main.gameObject.name);
+            Player.GetComponent<NewMovement>().freezeon();
+            GameObject GO = GameObject.Find("CamPoint");
+
+            Vector3 Dir = GO.transform.position - Camera.main.transform.position;
+            Dir = new Vector3(Dir.x, Dir.y, 0);
+
+            float Timer = 0;
+
+            while (Timer < 2)
+            {
+                Debug.Log("Moving Camera");
+                Camera.main.transform.position = Camera.main.transform.position + Dir*(Time.deltaTime/2);
+                Timer += Time.deltaTime;
+                yield return null;
+            }
+
+            //Debug.Log("Wait for 2 seconds");
             yield return new WaitForSeconds(2);
 
-            GameObject GO = GameObject.Find("Wall (93)");
-            Camera.main.transform.position = GO.transform.position;
-
-            yield return new WaitForSeconds(2);
-                
+            //Debug.Log("Delete Walls");
             GameObject.Find("Wall (93)").SetActive(false);
-            GameObject.Find("Wall(94)").SetActive(false);
-
+            GameObject.Find("Wall (94)").SetActive(false);
             yield return new WaitForSeconds(2);
 
-            Camera.main.transform.position = Player.transform.position;
+            Dir = Player.transform.position - Camera.main.transform.position;
+            Dir = new Vector3(Dir.x, Dir.y, 0);
 
-            yield return new WaitForSeconds(2);
+            Timer = 0;
+
+            while (Timer < 2)
+            {
+                Debug.Log("Moving Camera");
+                Camera.main.transform.position = Camera.main.transform.position + Dir * (Time.deltaTime / 2);
+                Timer += Time.deltaTime;
+                yield return null;
+            }
+            
+            Player.GetComponent<NewMovement>().freezeoff();
         }
     }
 

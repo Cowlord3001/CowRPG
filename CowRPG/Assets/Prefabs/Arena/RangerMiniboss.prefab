@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fec50558f848b04795eb73371e3834c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rotation: 7
+  Rotation: 10
 --- !u!114 &114753718537834444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,11 +216,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 1152822650491740, guid: af6e031f1d412d24ab84ee1a94692435, type: 2}
-  ROF: 0.05
+  ROF: 0.005
   Type: RangerMiniboss
   BurstCooldown: 1
   BurstNumber: 5
-  Accuracy: 30
+  Accuracy: 120
+  SpreadShots: 0
+  MaxSpreadAngle: 0
 --- !u!114 &114891486147388318
 MonoBehaviour:
   m_ObjectHideFlags: 1

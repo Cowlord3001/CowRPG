@@ -39,9 +39,10 @@ public class EnemyHealth : MonoBehaviour {
             GameObject GO = Instantiate(Death, transform.position, Quaternion.identity);
             Destroy(GO, 2);
             QuestLog.AddEXP(EXP);
-            if(gameObject.name == "Miniboss 1" || gameObject.name == "Miniboss 2" || gameObject.name == "Miniboss 3")
+            if(gameObject.name == "ChaserMiniboss" || gameObject.name == "RangerMiniboss" || gameObject.name == "WarperMiniboss")
             {
-                QuestLog.ForestMinibossCounter();
+                GameObject.Find("OverWorld Control").GetComponent<QuestLog>().MiniBossHelper();
+                //QuestLog.ForestMinibossCounter();
             }
             Destroy(gameObject);
         }

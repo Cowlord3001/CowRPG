@@ -12,7 +12,6 @@ public class Chat : MonoBehaviour {
     public QuestLog QuestLog;
 
     public GameObject Arena;
-    public GameObject[] Enemies;
     bool TalkedTo;
 
 	// Use this for initialization
@@ -54,24 +53,8 @@ public class Chat : MonoBehaviour {
 
     void EnemyNPCEnabler()
     {
-        if(gameObject.transform.parent.name == "Miniboss 1")
-        {
             GameObject.Find("OverWorld").SetActive(false);
             Arena.SetActive(true);
-            Enemies[0].SetActive(true);
-        }
-        else if (gameObject.transform.parent.name == "Miniboss 2")
-        {
-            GameObject.Find("OverWorld").SetActive(false);
-            Arena.SetActive(true);
-            Enemies[1].SetActive(true);
-        }
-        else if (gameObject.transform.parent.name == "Miniboss 3")
-        {
-            GameObject.Find("OverWorld").SetActive(false);
-            Arena.SetActive(true);
-            Enemies[2].SetActive(true);
-        }
     }
 
     void StartDialogue()

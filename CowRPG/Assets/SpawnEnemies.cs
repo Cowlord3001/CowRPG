@@ -13,8 +13,8 @@ public class SpawnEnemies : MonoBehaviour {
     public int LvlMin, LvlMax;
     public GameObject Overworld;
     GameObject Player;
-
-    bool MinibossEncounter;
+    
+    public GameObject Boss;
     bool loading;
 
 	// Use this for initialization
@@ -39,16 +39,9 @@ public class SpawnEnemies : MonoBehaviour {
             ActiveEnemies.Add(Enemy);
         }
 
-        GameObject[] temp = GameObject.FindGameObjectsWithTag("Enemy");
-
-        Debug.Log(temp.Length);
-        foreach (GameObject Enemy in temp)
+        if (Boss != null)
         {
-            if (gameObject.name == "Miniboss 1" || gameObject.name == "Miniboss 2" || gameObject.name == "Miniboss 3")
-            {
-                MinibossEncounter = true;
-            }
-            ActiveEnemies.Add(Enemy);
+            ActiveEnemies.Add(Boss);
         }
         
 	}
@@ -58,11 +51,12 @@ public class SpawnEnemies : MonoBehaviour {
         GameObject Cam = Camera.main.gameObject;
         Cam.SetActive(false);
         Overworld.gameObject.SetActive(true);
-        if (MinibossEncounter == true)
-        {
-            QuestLog.ForestMinibossCounter();
-            MinibossEncounter = false;
-        }
+        //if (MinibossEncounter == true)
+        //{
+        //    StartCoroutine(GameObject.Find("OverWorld Control").GetComponent<QuestLog>().ForestMinibossCounter());
+        //    //StartCoroutine(QuestLog.ForestMinibossCounter());
+        //    MinibossEncounter = false;
+        //}
         Cam.SetActive(true);
         gameObject.SetActive(false);
     }
@@ -77,6 +71,7 @@ public class SpawnEnemies : MonoBehaviour {
         else
         {
             ActiveEnemies.RemoveAll(Enemy => Enemy == null);
+            ActiveEnemies.RemoveAll(Enemy => Enemy.activeSelf == false);
         }
 	}
 }
