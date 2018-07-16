@@ -11,6 +11,8 @@ public class EnemyFiring : MonoBehaviour
     public string Type;
     public float BurstCooldown;
     public int BurstNumber;
+    public bool AltSpread;
+    bool AltSpreadTracker;
     public float Accuracy;
 
     float Timer;
@@ -28,6 +30,8 @@ public class EnemyFiring : MonoBehaviour
         level = GetComponent<EnemyHealth>().lvl;
         Timer = 0;
         x = Random.Range(5, 11);
+
+        AltSpreadTracker = true;
     }
 
     // Update is called once per frame
@@ -67,11 +71,37 @@ public class EnemyFiring : MonoBehaviour
     void SpreadFire()
     {
         float SpreadAngle = MaxSpreadAngle / SpreadShots;
-
-        for (int i = -SpreadShots/2; i < SpreadShots/2; i++)
+        
+        if(AltSpread == true)
         {
-            GameObject bullet = Instantiate(Bullet, transform.position, transform.rotation * Quaternion.AngleAxis(SpreadAngle*i, Vector3.forward));
-            bullet.GetComponent<EBullet>().Damage = level + 1;
+            if (AltSpreadTracker == true)
+            {
+                for (int i = -SpreadShots / 2; i < SpreadShots / 2; i++)
+                {
+                    GameObject bullet = Instantiate(Bullet, transform.position, transform.rotation * Quaternion.AngleAxis((SpreadAngle * i) + SpreadAngle / 2, Vector3.forward));
+                    bullet.GetComponent<EBullet>().Damage = level + 1;
+                }
+                AltSpreadTracker = false;
+            }
+
+            else
+            {
+                for (int i = -SpreadShots / 2; i <= SpreadShots / 2; i++)
+                {
+                    GameObject bullet = Instantiate(Bullet, transform.position, transform.rotation * Quaternion.AngleAxis(SpreadAngle * i, Vector3.forward));
+                    bullet.GetComponent<EBullet>().Damage = level + 1;
+                }
+                AltSpreadTracker = true;
+            }
+        }
+
+        else
+        {
+            for (int i = -SpreadShots / 2; i <= SpreadShots / 2; i++)
+            {
+                GameObject bullet = Instantiate(Bullet, transform.position, transform.rotation * Quaternion.AngleAxis(SpreadAngle * i, Vector3.forward));
+                bullet.GetComponent<EBullet>().Damage = level + 1;
+            }
         }
 
         Timestamp = Time.time;
@@ -83,14 +113,7 @@ public class EnemyFiring : MonoBehaviour
         {
             for (int i = 0; i < BurstNumber; i++)
             {
-                if (name == "Warper" && level >= 2 || name == "WarperMiniboss")
-                {
-                    Invoke("SpreadFire", ROF * i);
-                }
-                else
-                {
-                    Invoke("Fire", ROF * i);
-                }
+               Invoke("SpreadFire", ROF * i);
             }
         }
     }

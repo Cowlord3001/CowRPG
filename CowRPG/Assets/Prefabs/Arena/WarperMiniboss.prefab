@@ -209,6 +209,7 @@ MonoBehaviour:
   Type: Burst
   BurstCooldown: 1
   BurstNumber: 5
+  AltSpread: 0
   Accuracy: 0
   SpreadShots: 32
   MaxSpreadAngle: 360

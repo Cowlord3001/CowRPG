@@ -39,7 +39,7 @@ public class TeleportRaycast : MonoBehaviour {
         else
         {
             float Range;
-            Range = Random.Range(Min, hit.collider.gameObject.transform.position.magnitude);
+            Range = Random.Range(Min, (hit.collider.gameObject.transform.position - transform.position).magnitude - 1);
             Vector2 TargetPos = (Vector2)transform.position + dir * Range;
             return TargetPos;
         }
