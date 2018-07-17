@@ -8,34 +8,39 @@ public class Battlemove : MonoBehaviour
     float ydir;
     float xdir;
     Rigidbody2D Mybody;
-    public float DashTime;
-    public float DashDist;
-    public float SlideDist;
-    public float DashThresh;
+    //public float DashTime;
+    public float DashSpeed;
+    public float DashDistance;
+    //public float SlideDist;
+    //public float DashThresh;
     public float DashCool;
-    float Timestamp2;
     float Timestamp;
     bool Dashing;
-    float Wc, Ac, Sc, Dc;
+    //float Wc, Ac, Sc, Dc;
 
     private void Start()
     {
         Mybody = GetComponent<Rigidbody2D>();
-        Wc = 0;
-        Ac = 0;
-        Sc = 0;
-        Dc = 0;
-        Timestamp2 = 0;
+        //Wc = 0;
+        //Ac = 0;
+        //Sc = 0;
+        //Dc = 0;
+        Timestamp = 0;
+        Dashing = false;
     }
 
     private void Update()
     {
+
+        Debug.Log("Dashing is " + Dashing.ToString());
+
         if (Dashing == false)
         {
+            Debug.Log("Moving Normally");
             NormalMove();
         }
 
-        if (Timestamp2 + DashCool < Time.time || Dashing == true)
+        if (Timestamp + DashCool < Time.time || Dashing == true)
         {
             Dash();
         }
@@ -55,93 +60,178 @@ public class Battlemove : MonoBehaviour
 
     void Dash()
     {
-        if (Dashing == false)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && Dashing == false)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
             {
-                if (Input.GetKeyDown(KeyCode.W) && Wc > 0.1)
-                {
-                    Mybody.velocity = DashDist * Vector2.up;
-                    Dashing = true;
-                    Timestamp = Time.time;
-                    Timestamp2 = Time.time;
-
-                }
-                Wc = Wc + 1;
+                Dashing = true;
+                Vector2 Dir = new Vector2(-1, 1);
+                Dir = Dir.normalized;
+                Debug.Log("Dashing towards "+ Dir.x + "," + Dir.y);
+                Mybody.velocity = Dir * DashSpeed;
+                Timestamp = Time.time;
+            }
+            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+            {
+                Dashing = true;
+                Vector2 Dir = new Vector2(1, 1);
+                Dir = Dir.normalized;
+                Mybody.velocity = Dir * DashSpeed;
+                Timestamp = Time.time;
+            }
+            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+            {
+                Dashing = true;
+                Vector2 Dir = new Vector2(-1, -1);
+                Dir = Dir.normalized;
+                Mybody.velocity = Dir * DashSpeed;
+                Timestamp = Time.time;
+            }
+            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+            {
+                Dashing = true;
+                Vector2 Dir = new Vector2(1, -1);
+                Dir = Dir.normalized;
+                Mybody.velocity = Dir * DashSpeed;
+                Timestamp = Time.time;
+            }
+            else if (Input.GetKey(KeyCode.W))
+            {
+                Dashing = true;
+                Vector2 Dir = Vector2.up;
+                Mybody.velocity = Dir * DashSpeed;
+                Timestamp = Time.time;
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                Dashing = true;
+                Vector2 Dir = Vector2.down;
+                Mybody.velocity = Dir * DashSpeed;
+                Timestamp = Time.time;
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                Dashing = true;
+                Vector2 Dir = Vector2.left;
+                Mybody.velocity = Dir * DashSpeed;
+                Timestamp = Time.time;
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                Dashing = true;
+                Vector2 Dir = Vector2.right;
+                Mybody.velocity = Dir * DashSpeed;
+                Timestamp = Time.time;
+            }
+            else
+            {
+               
             }
 
-            if (Wc > 0)
-            {
-                Wc = Wc - Time.deltaTime * DashThresh;
-            }
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                if (Input.GetKeyDown(KeyCode.A) && Ac > 0.1)
-                {
-                    Mybody.velocity = DashDist * Vector2.left;
-                    Dashing = true;
-                    Timestamp = Time.time;
-                    Timestamp2 = Time.time;
-
-                }
-                Ac = Ac + 1;
-            }
-
-            if (Ac > 0)
-            {
-                Ac = Ac - Time.deltaTime * DashThresh;
-            }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                if (Input.GetKeyDown(KeyCode.S) && Sc > 0.1)
-                {
-                    Mybody.velocity = DashDist * Vector2.down;
-                    Dashing = true;
-                    Timestamp = Time.time;
-                    Timestamp2 = Time.time;
-
-                }
-                Sc = Sc + 1;
-            }
-
-            if (Sc > 0)
-            {
-                Sc = Sc - Time.deltaTime * DashThresh;
-            }
-
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                if (Input.GetKeyDown(KeyCode.D) && Dc > 0.1)
-                {
-                    Mybody.velocity = DashDist * Vector2.right;
-                    Dashing = true;
-                    Timestamp = Time.time;
-                    Timestamp2 = Time.time;
-
-                }
-                Dc = Dc + 1;
-            }
-
-            if (Dc > 0)
-            {
-                Dc = Dc - Time.deltaTime * DashThresh;
-            }
-        }
-        if (Timestamp + DashTime - SlideDist < Time.time)
-        {
-            Mybody.velocity = Mybody.velocity*.5f + new Vector2(xdir * Speed, ydir * Speed);
-            Vector2 Look = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            float angle = Mathf.Atan2(Look.y, Look.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
-        if (Timestamp + DashTime < Time.time)
+        Debug.Log(Time.time);
+        Debug.Log(DashDistance);
+        Debug.Log(DashSpeed);
+
+
+        Debug.Log(Timestamp + DashDistance/DashSpeed);
+        if (Timestamp + (DashDistance / DashSpeed) < Time.time)
         {
             Dashing = false;
         }
     }
+
+
+    //void Dash()
+    //{
+    //    if (Dashing == false)
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.W))
+    //        {
+    //            if (Input.GetKeyDown(KeyCode.W) && Wc > 0.1)
+    //            {
+    //                Mybody.velocity = DashSpeed * Vector2.up;
+    //                Dashing = true;
+    //                Timestamp = Time.time;
+    //                Timestamp2 = Time.time;
+
+    //            }
+    //            Wc = Wc + 1;
+    //        }
+
+    //        if (Wc > 0)
+    //        {
+    //            Wc = Wc - Time.deltaTime * DashThresh;
+    //        }
+
+    //        if (Input.GetKeyDown(KeyCode.A))
+    //        {
+    //            if (Input.GetKeyDown(KeyCode.A) && Ac > 0.1)
+    //            {
+    //                Mybody.velocity = DashSpeed * Vector2.left;
+    //                Dashing = true;
+    //                Timestamp = Time.time;
+    //                Timestamp2 = Time.time;
+
+    //            }
+    //            Ac = Ac + 1;
+    //        }
+
+    //        if (Ac > 0)
+    //        {
+    //            Ac = Ac - Time.deltaTime * DashThresh;
+    //        }
+
+    //        if (Input.GetKeyDown(KeyCode.S))
+    //        {
+    //            if (Input.GetKeyDown(KeyCode.S) && Sc > 0.1)
+    //            {
+    //                Mybody.velocity = DashSpeed * Vector2.down;
+    //                Dashing = true;
+    //                Timestamp = Time.time;
+    //                Timestamp2 = Time.time;
+
+    //            }
+    //            Sc = Sc + 1;
+    //        }
+
+    //        if (Sc > 0)
+    //        {
+    //            Sc = Sc - Time.deltaTime * DashThresh;
+    //        }
+
+    //        if (Input.GetKeyDown(KeyCode.D))
+    //        {
+    //            if (Input.GetKeyDown(KeyCode.D) && Dc > 0.1)
+    //            {
+    //                Mybody.velocity = DashSpeed * Vector2.right;
+    //                Dashing = true;
+    //                Timestamp = Time.time;
+    //                Timestamp2 = Time.time;
+
+    //            }
+    //            Dc = Dc + 1;
+    //        }
+
+    //        if (Dc > 0)
+    //        {
+    //            Dc = Dc - Time.deltaTime * DashThresh;
+    //        }
+    //    }
+        //if (Timestamp + DashTime - SlideDist < Time.time)
+        //{
+        //    Mybody.velocity = Mybody.velocity*.5f + new Vector2(xdir * Speed, ydir * Speed);
+        //    Vector2 Look = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        //    float angle = Mathf.Atan2(Look.y, Look.x) * Mathf.Rad2Deg;
+        //    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //}
+
+    //    if (Timestamp + DashTime < Time.time)
+    //    {
+    //        Dashing = false;
+    //    }
+    //}
 }
     
 
