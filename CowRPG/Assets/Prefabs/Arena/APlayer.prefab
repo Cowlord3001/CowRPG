@@ -141,8 +141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   DashSpeed: 15
-  DashDistance: 10
-  DashCool: 1.6
+  DashDistance: 3
+  DashCool: 0.4
 --- !u!114 &114686401830602422
 MonoBehaviour:
   m_ObjectHideFlags: 1

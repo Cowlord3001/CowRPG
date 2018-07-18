@@ -31,12 +31,8 @@ public class Battlemove : MonoBehaviour
 
     private void Update()
     {
-
-        Debug.Log("Dashing is " + Dashing.ToString());
-
         if (Dashing == false)
         {
-            Debug.Log("Moving Normally");
             NormalMove();
         }
 
@@ -65,15 +61,20 @@ public class Battlemove : MonoBehaviour
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
             {
                 Dashing = true;
+                gameObject.tag = "Dashing";
+                gameObject.transform.GetChild(0).tag = "Untagged";
+                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                 Vector2 Dir = new Vector2(-1, 1);
                 Dir = Dir.normalized;
-                Debug.Log("Dashing towards "+ Dir.x + "," + Dir.y);
                 Mybody.velocity = Dir * DashSpeed;
                 Timestamp = Time.time;
             }
             else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
             {
                 Dashing = true;
+                gameObject.tag = "Dashing";
+                gameObject.transform.GetChild(0).tag = "Untagged";
+                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                 Vector2 Dir = new Vector2(1, 1);
                 Dir = Dir.normalized;
                 Mybody.velocity = Dir * DashSpeed;
@@ -82,6 +83,9 @@ public class Battlemove : MonoBehaviour
             else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
             {
                 Dashing = true;
+                gameObject.tag = "Dashing";
+                gameObject.transform.GetChild(0).tag = "Untagged";
+                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                 Vector2 Dir = new Vector2(-1, -1);
                 Dir = Dir.normalized;
                 Mybody.velocity = Dir * DashSpeed;
@@ -90,6 +94,9 @@ public class Battlemove : MonoBehaviour
             else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
             {
                 Dashing = true;
+                gameObject.tag = "Dashing";
+                gameObject.transform.GetChild(0).tag = "Untagged";
+                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                 Vector2 Dir = new Vector2(1, -1);
                 Dir = Dir.normalized;
                 Mybody.velocity = Dir * DashSpeed;
@@ -98,6 +105,9 @@ public class Battlemove : MonoBehaviour
             else if (Input.GetKey(KeyCode.W))
             {
                 Dashing = true;
+                gameObject.tag = "Dashing";
+                gameObject.transform.GetChild(0).tag = "Untagged";
+                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                 Vector2 Dir = Vector2.up;
                 Mybody.velocity = Dir * DashSpeed;
                 Timestamp = Time.time;
@@ -105,6 +115,9 @@ public class Battlemove : MonoBehaviour
             else if (Input.GetKey(KeyCode.S))
             {
                 Dashing = true;
+                gameObject.tag = "Dashing";
+                gameObject.transform.GetChild(0).tag = "Untagged";
+                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                 Vector2 Dir = Vector2.down;
                 Mybody.velocity = Dir * DashSpeed;
                 Timestamp = Time.time;
@@ -112,6 +125,9 @@ public class Battlemove : MonoBehaviour
             else if (Input.GetKey(KeyCode.A))
             {
                 Dashing = true;
+                gameObject.tag = "Dashing";
+                gameObject.transform.GetChild(0).tag = "Untagged";
+                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                 Vector2 Dir = Vector2.left;
                 Mybody.velocity = Dir * DashSpeed;
                 Timestamp = Time.time;
@@ -119,6 +135,9 @@ public class Battlemove : MonoBehaviour
             else if (Input.GetKey(KeyCode.D))
             {
                 Dashing = true;
+                gameObject.tag = "Dashing";
+                gameObject.transform.GetChild(0).tag = "Untagged";
+                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                 Vector2 Dir = Vector2.right;
                 Mybody.velocity = Dir * DashSpeed;
                 Timestamp = Time.time;
@@ -130,15 +149,19 @@ public class Battlemove : MonoBehaviour
 
         }
 
-        Debug.Log(Time.time);
-        Debug.Log(DashDistance);
-        Debug.Log(DashSpeed);
-
-
-        Debug.Log(Timestamp + DashDistance/DashSpeed);
+        if (Timestamp + ((DashDistance / DashSpeed) * .6) < Time.time)
+        {
+            gameObject.tag = "Player";
+            if (gameObject.GetComponent<SpriteRenderer>().color != Color.red)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+        }
+        
         if (Timestamp + (DashDistance / DashSpeed) < Time.time)
         {
             Dashing = false;
+            gameObject.transform.GetChild(0).tag = QuestLog.Class;
         }
     }
 

@@ -36,10 +36,18 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
+    public void RevertColor()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
     void ApplyPDMG(int DMG)
     {
         hp = hp - DMG;
         HealthBar.value = hp;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        CancelInvoke();
+        Invoke("RevertColor", .1f);
         if (hp <= 0)
         {
             GameObject GO = Instantiate(Death, transform.position, Quaternion.identity);
