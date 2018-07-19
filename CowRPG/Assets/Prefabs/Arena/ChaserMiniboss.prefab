@@ -217,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxAccel: 20
   MaxSpeed: 5
+  DashNum: 3
   Damage: 5
 --- !u!212 &212905131120630862
 SpriteRenderer:

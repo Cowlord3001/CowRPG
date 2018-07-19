@@ -67,7 +67,14 @@ public class PlayerHealth : MonoBehaviour
             GameObject GO = Instantiate(Contact, CPoint, Quaternion.identity);
             Destroy(GO, 2);
 
-            GetComponent<Rigidbody2D>().AddForce(Push.normalized * CScale);
+            if(Battlemove.Dashing == true)
+            {
+                GetComponent<Rigidbody2D>().AddForce(Push.normalized * (CScale/4));
+            }
+            else
+            {
+                GetComponent<Rigidbody2D>().AddForce(Push.normalized * CScale);
+            }
         }
     }
 }

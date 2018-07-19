@@ -15,7 +15,7 @@ public class Battlemove : MonoBehaviour
     //public float DashThresh;
     public float DashCool;
     float Timestamp;
-    bool Dashing;
+    public static bool Dashing;
     //float Wc, Ac, Sc, Dc;
 
     private void Start()

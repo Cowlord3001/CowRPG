@@ -24,7 +24,14 @@ public class SpawnEnemies : MonoBehaviour {
         int EnemyNum = Random.Range(EnemyMin, EnemyMax + 1);
         Player = GameObject.Find("APlayer");
 
-        Player.transform.position = (Vector2)transform.GetChild(0).transform.position + new Vector2(-Width / 2, 0);
+        if(gameObject.name == "ForestBossArena")
+        {
+            Player.transform.position = (Vector2)transform.GetChild(0).transform.position + new Vector2(0, -5);
+        }
+        else
+        {
+            Player.transform.position = (Vector2)transform.GetChild(0).transform.position + new Vector2(-Width / 2, 0);
+        }
         Player.transform.GetChild(0).tag = QuestLog.Class;
 
         for (int i = 0; i < EnemyNum; i++)

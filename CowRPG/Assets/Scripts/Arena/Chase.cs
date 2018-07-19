@@ -7,6 +7,7 @@ public class Chase : MonoBehaviour {
     float Acceleration;
     public float MaxAccel;
     public float MaxSpeed;
+    public int DashNum;
     public int Damage;
     //GameObject Player;
     Rigidbody2D MyBody;
@@ -81,7 +82,7 @@ public class Chase : MonoBehaviour {
         }
         else
         {
-            for (int i = 1; i < 4; i++)
+            for (int i = 1; i < DashNum + 1; i++)
             {
                 Invoke("Dash", i * 2);
             }
@@ -110,6 +111,10 @@ public class Chase : MonoBehaviour {
             Acceleration = 0;
             Dashing = true;
             x = Random.Range(5, 11);
+            if (gameObject.name == "ForestBoss")
+            {
+                x = 5;
+            }
             DashTime = 0;
         }
     }
