@@ -103,6 +103,10 @@ public class Chase : MonoBehaviour {
             Acceleration = MaxAccel;
             Dashing = false;
             x = Random.Range(5, 11);
+            if (gameObject.name == "ForestBoss")
+            {
+                x = 20;
+            }
             DashTime = 0;
         }
         else

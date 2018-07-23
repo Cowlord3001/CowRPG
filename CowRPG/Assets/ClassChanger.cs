@@ -21,6 +21,7 @@ public class ClassChanger : MonoBehaviour {
     public void ChangeClass(string Class)
     {
         TutorialPlayer.transform.GetChild(0).tag = Class;
+        QuestLog.Class = Class;
     }
 
     public void ExitTutorial()
