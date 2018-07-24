@@ -24,11 +24,11 @@ GameObject:
   - component: {fileID: 114778091699557700}
   m_Layer: 0
   m_Name: Boss_Sentry (1)
-  m_TagString: Enemy
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1009724746253300
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,7 +42,23 @@ GameObject:
   - component: {fileID: 114592466331232708}
   m_Layer: 0
   m_Name: Boss_Sentry
-  m_TagString: Enemy
+  m_TagString: Weapon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &1015323256714744
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4208308774799398}
+  - component: {fileID: 61164438157524740}
+  m_Layer: 0
+  m_Name: BossWall
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,11 +74,11 @@ GameObject:
   - component: {fileID: 114732085010948020}
   m_Layer: 0
   m_Name: Boss_RMiniboss (2)
-  m_TagString: Enemy
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1065645509293924
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,11 +90,11 @@ GameObject:
   - component: {fileID: 114692414112975330}
   m_Layer: 0
   m_Name: Boss_RMiniboss (4)
-  m_TagString: Enemy
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1115848215663208
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,11 +108,11 @@ GameObject:
   - component: {fileID: 114776440069968726}
   m_Layer: 0
   m_Name: Boss_Sentry (4)
-  m_TagString: Enemy
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1120883860612346
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,11 +126,11 @@ GameObject:
   - component: {fileID: 114671397654290684}
   m_Layer: 0
   m_Name: Boss_Sentry (7)
-  m_TagString: Enemy
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1124607795448816
 GameObject:
   m_ObjectHideFlags: 1
@@ -145,11 +161,11 @@ GameObject:
   - component: {fileID: 114158843062390784}
   m_Layer: 0
   m_Name: Boss_Sentry (2)
-  m_TagString: Enemy
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1235017151633482
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,11 +177,11 @@ GameObject:
   - component: {fileID: 114057921433180976}
   m_Layer: 0
   m_Name: Boss_RMiniboss (1)
-  m_TagString: Enemy
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1297823516575662
 GameObject:
   m_ObjectHideFlags: 1
@@ -196,11 +212,11 @@ GameObject:
   - component: {fileID: 114472245249375770}
   m_Layer: 0
   m_Name: Boss_Sentry (5)
-  m_TagString: Enemy
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1344639282249038
 GameObject:
   m_ObjectHideFlags: 1
@@ -265,11 +281,11 @@ GameObject:
   - component: {fileID: 114126158869506848}
   m_Layer: 0
   m_Name: Boss_Sentry (6)
-  m_TagString: Enemy
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1408782863394322
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,11 +298,11 @@ GameObject:
   - component: {fileID: 114456216819732690}
   m_Layer: 0
   m_Name: Boss_RMiniboss
-  m_TagString: Enemy
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1474268150565176
 GameObject:
   m_ObjectHideFlags: 1
@@ -383,11 +399,11 @@ GameObject:
   - component: {fileID: 114063583530214674}
   m_Layer: 0
   m_Name: Boss_RMiniboss (3)
-  m_TagString: Enemy
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1809128079497354
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,11 +486,11 @@ GameObject:
   - component: {fileID: 114131913312416800}
   m_Layer: 0
   m_Name: Boss_Sentry (3)
-  m_TagString: Enemy
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1929194914829072
 GameObject:
   m_ObjectHideFlags: 1
@@ -502,7 +518,7 @@ GameObject:
   - component: {fileID: 4458845023098974}
   - component: {fileID: 61426877588536726}
   m_Layer: 0
-  m_Name: Wall (7)
+  m_Name: Wall (8)
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,6 +536,7 @@ GameObject:
   - component: {fileID: 114749529945296838}
   - component: {fileID: 61257249336570310}
   - component: {fileID: 114655202273236586}
+  - component: {fileID: 114551184602360612}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -680,6 +697,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!4 &4208308774799398
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1015323256714744}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -19, z: 10.046875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4737388942035700}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4260499445018126
 Transform:
   m_ObjectHideFlags: 1
@@ -780,11 +810,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1963387712347350}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -19, z: 10.046875}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 14, z: 10.046875}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
   m_Children: []
   m_Father: {fileID: 4737388942035700}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4510863768144376
 Transform:
@@ -890,6 +920,7 @@ Transform:
   m_LocalPosition: {x: -0.00003051758, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4208308774799398}
   - {fileID: 4458845023098974}
   m_Father: {fileID: 4194833263618804}
   m_RootOrder: 0
@@ -1523,6 +1554,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!61 &61164438157524740
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1015323256714744}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.64, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 54, y: 1}
+  m_EdgeRadius: 0
 --- !u!61 &61257249336570310
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -2055,6 +2111,34 @@ MonoBehaviour:
   Accuracy: 0
   SpreadShots: 5
   MaxSpreadAngle: 90
+--- !u!114 &114551184602360612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975231622515804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b679f2456fd6b0c48924dd2e7ed77968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Burst:
+  - {fileID: 1009724746253300}
+  - {fileID: 1000423296022086}
+  - {fileID: 1187029202691578}
+  - {fileID: 1916243068150828}
+  Line:
+  - {fileID: 1115848215663208}
+  - {fileID: 1321709976495972}
+  - {fileID: 1395542864877496}
+  - {fileID: 1120883860612346}
+  Border:
+  - {fileID: 1235017151633482}
+  - {fileID: 1064889951713318}
+  - {fileID: 1742463112638518}
+  - {fileID: 1065645509293924}
+  Beam:
+  - {fileID: 1408782863394322}
 --- !u!114 &114592466331232708
 MonoBehaviour:
   m_ObjectHideFlags: 1

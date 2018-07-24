@@ -27,7 +27,10 @@ public class EnemyFiring : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        level = GetComponent<EnemyHealth>().lvl;
+        if (gameObject.tag != "Weapon")
+        {
+            level = GetComponent<EnemyHealth>().lvl;
+        }
         Timer = 0;
         x = Random.Range(5, 11);
 
