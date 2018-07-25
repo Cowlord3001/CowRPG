@@ -31,7 +31,7 @@ public class BossController : MonoBehaviour {
 	void Update ()
     {
         Timer = Timer + Time.deltaTime;
-        if(Timer > 1)
+        if(Timer > 8)
         {
             RandomAttack();
             Timer = 0;
@@ -64,7 +64,7 @@ public class BossController : MonoBehaviour {
 
         List<GameObject[]> CurrentAttacks = new List<GameObject[]>();
 
-        for (int i = 0; i < x; i++)
+        for (int i = 0; i < Attacks.Count; i++)
         {
             if( ((float)Rand/(float)x) > Random.Range(0, 1))
             {
