@@ -31,10 +31,17 @@ public class BossController : MonoBehaviour {
 	void Update ()
     {
         Timer = Timer + Time.deltaTime;
-        if(Timer > 8)
+        if(Timer > 12)
         {
             RandomAttack();
             Timer = 0;
+        }
+
+        if(Chase.Dashing == true)
+        {
+            AttackOff(Beam);
+            AttackOff(Burst);
+            AttackOff(Border);
         }
 	}
 
@@ -60,13 +67,13 @@ public class BossController : MonoBehaviour {
 
         int Rand = Random.Range(1, x + 1);
 
-        Debug.Log(Rand + " Attacks On");
+        //Debug.Log(Rand + " Attacks On");
 
         List<GameObject[]> CurrentAttacks = new List<GameObject[]>();
 
         for (int i = 0; i < Attacks.Count; i++)
         {
-            if( ((float)Rand/(float)x) > Random.Range(0, 1))
+            if( ((float)Rand/(float)x) > Random.Range(0f, 1f))
             {
                 CurrentAttacks.Add(Attacks[i]);
                 x--;
@@ -78,7 +85,7 @@ public class BossController : MonoBehaviour {
             }
         }
 
-        Debug.Log(CurrentAttacks.Count + " Attacks Selected");
+        //Debug.Log(CurrentAttacks.Count + " Attacks Selected");
 
         foreach (GameObject[] temp in Attacks)
         {

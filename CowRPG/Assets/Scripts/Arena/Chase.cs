@@ -15,7 +15,7 @@ public class Chase : MonoBehaviour {
     float x;
     float DashTime;
 
-    bool Dashing;
+    public static bool Dashing;
 
     // Use this for initialization
     void Start() {
