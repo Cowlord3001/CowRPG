@@ -8,6 +8,8 @@ public class BossController : MonoBehaviour {
     public GameObject[] Line;
     public GameObject[] Border;
     public GameObject[] Beam;
+    public GameObject[] Wheel;
+    public GameObject[] BorderWheels;
 
 
     List<GameObject[]> Attacks;
@@ -23,6 +25,8 @@ public class BossController : MonoBehaviour {
         Attacks.Add(Burst);
         Attacks.Add(Border);
         Attacks.Add(Beam);
+        Attacks.Add(Line);
+        Attacks.Add(Wheel);
         Debug.Log(Attacks.Count);
         Timer = 0;
 	}
@@ -42,6 +46,10 @@ public class BossController : MonoBehaviour {
             AttackOff(Beam);
             AttackOff(Burst);
             AttackOff(Border);
+            Attacks.Add(Line);
+            Attacks.Add(Wheel);
+
+            Timer = 8;
         }
 	}
 
@@ -63,7 +71,7 @@ public class BossController : MonoBehaviour {
 
     void RandomAttack()
     {
-        int x = Attacks.Count;
+        int x = 3;
 
         int Rand = Random.Range(1, x + 1);
 

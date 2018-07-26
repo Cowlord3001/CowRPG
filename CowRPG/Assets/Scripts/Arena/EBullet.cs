@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EBullet : MonoBehaviour
 {
-
+    public bool Invincible;
     public float Speed;
     public float BulletLife;
     public float Damage;
@@ -25,7 +25,7 @@ public class EBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && Invincible == false)
         {
             collision.gameObject.SendMessage("ApplyPDMG", Damage);
             GameObject GO = Instantiate(Death, transform.position, Quaternion.identity);
@@ -33,11 +33,21 @@ public class EBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        else if (collision.gameObject.tag == "Wall")
+        else if (collision.gameObject.tag == "Wall" && Invincible == false)
         {
             GameObject GO = Instantiate(Death, transform.position, Quaternion.identity);
             Destroy(GO, 2);
             Destroy(gameObject);
+        }
+
+        else if (Invincible == true)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                collision.gameObject.SendMessage("ApplyPDMG", Damage);
+                GameObject GO = Instantiate(Death, transform.position, Quaternion.identity);
+                Destroy(GO, 2);
+            }
         }
     }
 }

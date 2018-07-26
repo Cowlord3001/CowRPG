@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4098709776528050}
   - component: {fileID: 212166022370633844}
-  - component: {fileID: 50729565090686000}
   - component: {fileID: 58936628807389812}
   - component: {fileID: 114034073460727752}
   m_Layer: 0
@@ -43,26 +42,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50729565090686000
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1321939576117902}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &58936628807389812
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -89,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea997ec0e4c3dbe468d7041c29d58183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Invincible: 1
   Speed: 0
   BulletLife: 9999
   Damage: 3
