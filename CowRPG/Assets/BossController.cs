@@ -11,6 +11,10 @@ public class BossController : MonoBehaviour {
     public GameObject[] Wheel;
     public GameObject[] BorderWheels;
 
+    Chase MyMovement;
+    EnemyHealth MyHealth;
+    float AttackInterval;
+
 
     List<GameObject[]> Attacks;
 
@@ -19,6 +23,9 @@ public class BossController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        MyMovement = GetComponent<Chase>();
+        MyHealth = GetComponent<EnemyHealth>();
+        AttackInterval = 12;
         Attacks = new List<GameObject[]>();
 
 
@@ -27,15 +34,21 @@ public class BossController : MonoBehaviour {
         Attacks.Add(Beam);
         Attacks.Add(Line);
         Attacks.Add(Wheel);
-        Debug.Log(Attacks.Count);
         Timer = 0;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(MyHealth.hp <= 1900)
+        {
+            MyMovement.MaxSpeed = 1.5f;
+            MyMovement.Damage = 8;
+            AttackInterval = 10;
+        }
+
         Timer = Timer + Time.deltaTime;
-        if(Timer > 12)
+        if(Timer > AttackInterval)
         {
             RandomAttack();
             Timer = 0;
@@ -46,10 +59,10 @@ public class BossController : MonoBehaviour {
             AttackOff(Beam);
             AttackOff(Burst);
             AttackOff(Border);
-            Attacks.Add(Line);
-            Attacks.Add(Wheel);
+            AttackOff(Line);
+            AttackOff(Wheel);
 
-            Timer = 8;
+            Timer = 5;
         }
 	}
 
@@ -71,9 +84,9 @@ public class BossController : MonoBehaviour {
 
     void RandomAttack()
     {
-        int x = 3;
+        int x = Attacks.Count;
 
-        int Rand = Random.Range(1, x + 1);
+        int Rand = Random.Range(1, 4);
 
         //Debug.Log(Rand + " Attacks On");
 
@@ -83,6 +96,7 @@ public class BossController : MonoBehaviour {
         {
             if( ((float)Rand/(float)x) > Random.Range(0f, 1f))
             {
+                Debug.Log(i+1 + " Attack Selected");
                 CurrentAttacks.Add(Attacks[i]);
                 x--;
                 Rand--;
