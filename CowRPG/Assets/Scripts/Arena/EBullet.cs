@@ -13,8 +13,11 @@ public class EBullet : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = transform.right * Speed;
-        Destroy(gameObject, BulletLife);
+        if(BulletLife < 9000)
+        {
+            GetComponent<Rigidbody2D>().velocity = transform.right * Speed;
+            Destroy(gameObject, BulletLife);
+        }
     }
 
     // Update is called once per frame

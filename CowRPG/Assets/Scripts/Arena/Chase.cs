@@ -99,7 +99,7 @@ public class Chase : MonoBehaviour {
     {
         if (Acceleration < .1)
         {
-            Debug.Log("Dash Toggled False at " + Time.time);
+            //Debug.Log("Dash Toggled False at " + Time.time);
             Acceleration = MaxAccel;
             Dashing = false;
             x = Random.Range(5, 11);
@@ -111,7 +111,7 @@ public class Chase : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Dash Toggled True at ");
+            //Debug.Log("Dash Toggled True at ");
             Acceleration = 0;
             Dashing = true;
             x = Random.Range(5, 11);
