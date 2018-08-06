@@ -92,6 +92,15 @@ public class QuestLog : MonoBehaviour {
         Progress = 2;
     }
 
+    public void Boss1Death()
+    {
+        Mayor.GetComponent<Chat>().DialogueControl = MayorText[2];
+        Trainer.GetComponent<Chat>().DialogueControl = TrainerText[2];
+        Guard.GetComponent<Chat>().DialogueControl = GuardText[2];
+        CurrentQuest.text = "-Report Back to the Mayor";
+        Progress = 3;
+    }
+
     public static void AddEXP(int n)
     {
         EXP = EXP + n;

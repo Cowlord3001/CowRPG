@@ -24,6 +24,9 @@ public class QuestDescription : MonoBehaviour {
                 QuestText.text = "-Exit the town to the left. Navigate the Forest until you reach the Forest Depths." +
                     " Find the monster there and slay it.";
                 break;
+            case 3:
+                QuestText.text = "-Make your way back to the mayor. You'll have to go back through the maze to get back to town.";
+                break;
 
             default:
 

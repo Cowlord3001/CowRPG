@@ -125,4 +125,9 @@ public class BossController : MonoBehaviour {
         }
 
     }
+
+    private void OnDestroy()
+    {
+        GameObject.Find("OverWorld Control").GetComponent<QuestLog>().Boss1Death();
+    }
 }
