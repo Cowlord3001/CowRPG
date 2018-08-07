@@ -8,10 +8,13 @@ public class RangedBulletHelix : MonoBehaviour
 
     public float Speed;
     public float VertSpeed;
+    public float Frequency;
     public float BulletLife;
+    float Timer;
     public float Damage;
     public GameObject Death;
     Rigidbody2D Mybody;
+    float Dir;
 
     // Use this for initialization
     void Start()
@@ -19,12 +22,24 @@ public class RangedBulletHelix : MonoBehaviour
         Mybody = GetComponent<Rigidbody2D>();
         Mybody.velocity = transform.right * Speed;
         Destroy(gameObject, BulletLife);
+
+        Dir = -1;
+        Mybody.velocity += Vector2.up * VertSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Mybody.velocity += + transform.up * 
+        if(Timer >= 2/Frequency)
+        {
+            Timer = 0;
+            Dir = Dir * -1;
+        }
+        
+        Mybody.velocity += Dir * (Vector2.up * (Frequency * VertSpeed) * Time.deltaTime);
+
+
+        Timer += Time.deltaTime;
     }
 
     private void OnDisable()
@@ -47,5 +62,10 @@ public class RangedBulletHelix : MonoBehaviour
             Destroy(GO, 2);
             Destroy(gameObject);
         }
+    }
+
+    void BulletUp()
+    {
+        Mybody.velocity = Mybody.velocity + (Vector2)transform.up * VertSpeed;
     }
 }
