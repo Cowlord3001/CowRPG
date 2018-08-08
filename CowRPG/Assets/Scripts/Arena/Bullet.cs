@@ -16,8 +16,12 @@ public class Bullet : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+		if(gameObject.tag == "Wall")
+        {
+            transform.position += Speed * Time.deltaTime * transform.right;
+        }
 	}
 
     private void OnDisable()

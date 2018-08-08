@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1330376839381108}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -182.20395, y: -11.156586, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 4041455684270750}
@@ -122,6 +122,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RangedBullet: {fileID: 1920104304926914, guid: 87c97578429357045aaa5ff3dd78a42e,
+    type: 2}
+  RangedBullet2: {fileID: 1616288276159264, guid: c01bd2a56a94e3a488fabbafc373a584,
+    type: 2}
+  RangedBulletSpecial_Burst: {fileID: 1487501090442962, guid: 3a079dec7b3246040a977f71567c620c,
     type: 2}
   MeleeBullet: {fileID: 1745416688440648, guid: 117f44810e74039458abdcfbbe053b57,
     type: 2}

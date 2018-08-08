@@ -5,17 +5,20 @@ using UnityEngine;
 public class Firing : MonoBehaviour {
 
     public GameObject RangedBullet;
+    public GameObject RangedBullet2;
+    public GameObject RangedBulletSpecial_Burst;
     public GameObject MeleeBullet;
     public GameObject SpellBullet;
     public float ROF;
     float Timestamp;
+    float Timer;
     bool Charging;
     GameObject GO;
     Vector3 Scale;
 
 	// Use this for initialization
 	void Start () {
-		
+        Timer = 11;
 	}
 	
 	// Update is called once per frame
@@ -32,6 +35,8 @@ public class Firing : MonoBehaviour {
         {
             SpellFire();
         }
+
+        Timer += Time.deltaTime;
 	}
 
     void RangerFire()
@@ -49,15 +54,17 @@ public class Firing : MonoBehaviour {
         }
         else
         {
-            if (Input.GetKey(KeyCode.Mouse0) && Timestamp + ROF < Time.time)
+            if (Input.GetKey(KeyCode.Mouse0) && Timestamp + ROF*0.66 < Time.time)
             {
-                Instantiate(RangedBullet, transform.position, transform.parent.transform.rotation);
-                Instantiate(RangedBullet, transform.position, transform.parent.transform.rotation);
-
-                
-
+                Instantiate(RangedBullet2, transform.position, transform.parent.transform.rotation);
                 Timestamp = Time.time;
             }
+        }
+
+        if (QuestLog.Level >= 5 && Input.GetKeyDown(KeyCode.Alpha1) && Timer > 10) 
+        {
+            RangerSpecial_Burst();
+            Timer = 0;
         }
         
     }
@@ -105,4 +112,20 @@ public class Firing : MonoBehaviour {
             }
         }
     }
+
+    void RangerSpecial_Burst()
+    {
+        ROF += 100000;
+
+        float angle = 45 / 5;
+        for (int i = -5 / 2; i <= 5 / 2; i++)
+        {
+            Instantiate(RangedBulletSpecial_Burst, 
+                        transform.position, 
+                        transform.rotation * Quaternion.AngleAxis((angle * i) + angle / 2, Vector3.forward));
+        }
+
+        ROF -= 100000;
+    }
+
 }
