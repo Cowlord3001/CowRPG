@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 6
-  VertSpeed: 5
-  Frequency: 2
+  VertAcceleration: 40
+  InitialVerticalVelocity: 7.5
   BulletLife: 10
   Damage: 1
   Death: {fileID: 1315234090345772, guid: 645b8cbf70e58c0488259293dcc358e7, type: 2}

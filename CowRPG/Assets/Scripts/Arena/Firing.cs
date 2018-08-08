@@ -36,11 +36,30 @@ public class Firing : MonoBehaviour {
 
     void RangerFire()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && Timestamp + ROF < Time.time)
+        Debug.Log(((int)(100 /Time.deltaTime))/100);
+
+
+        if(QuestLog.Level < 3)
         {
-            Instantiate(RangedBullet, transform.position, transform.parent.transform.rotation);
-            Timestamp = Time.time;
+            if (Input.GetKey(KeyCode.Mouse0) && Timestamp + ROF < Time.time)
+            {
+                Instantiate(RangedBullet, transform.position, transform.parent.transform.rotation);
+                Timestamp = Time.time;
+            }
         }
+        else
+        {
+            if (Input.GetKey(KeyCode.Mouse0) && Timestamp + ROF < Time.time)
+            {
+                Instantiate(RangedBullet, transform.position, transform.parent.transform.rotation);
+                Instantiate(RangedBullet, transform.position, transform.parent.transform.rotation);
+
+                
+
+                Timestamp = Time.time;
+            }
+        }
+        
     }
 
     void FighterFire()

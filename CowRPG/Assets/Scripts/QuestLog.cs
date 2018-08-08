@@ -30,7 +30,7 @@ public class QuestLog : MonoBehaviour {
     public static string Class;
     public static int Progress;
     static int EXP;
-    static int Level;
+    public static int Level;
 
     static int ForestMinibossCount;
 
@@ -42,6 +42,7 @@ public class QuestLog : MonoBehaviour {
         Level = 1;
         ForestMinibossCount = 0;
         Player = GameObject.Find("Player");
+        
     }
 
     // Update is called once per frame
@@ -65,6 +66,11 @@ public class QuestLog : MonoBehaviour {
             {
                 Class = "Ranger";
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            AddEXP(100000);
         }
 
 	}
@@ -121,6 +127,7 @@ public class QuestLog : MonoBehaviour {
         {
             Level = 5;
         }
+        Debug.Log("Current Level = " + Level);
     }
 
     public void MiniBossHelper()
