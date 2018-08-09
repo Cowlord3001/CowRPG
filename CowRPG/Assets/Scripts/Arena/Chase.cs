@@ -48,7 +48,14 @@ public class Chase : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Player")
         {
-            collision.gameObject.SendMessage("ApplyPDMG", Damage);
+            if(collision.gameObject.transform.GetChild(0).tag == "Fighter")
+            {
+                collision.gameObject.SendMessage("ApplyPDMG", Damage/2);
+            }
+            else
+            {
+                collision.gameObject.SendMessage("ApplyPDMG", Damage);
+            }
         }
     }
 

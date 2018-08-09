@@ -16,6 +16,7 @@ public class Battlemove : MonoBehaviour
     public float DashCool;
     float Timestamp;
     public static bool Dashing;
+    public GameObject DashBullet;
     //float Wc, Ac, Sc, Dc;
 
     private void Start()
@@ -58,6 +59,17 @@ public class Battlemove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1) && Dashing == false)
         {
+            if (gameObject.transform.GetChild(0).tag == "Fighter" && QuestLog.Level >= 3)
+            {
+                for (int i = 0; i < 16; i++)
+                {
+                    GameObject GO = Instantiate(DashBullet, transform.position,
+                        transform.rotation * Quaternion.AngleAxis((360f / 16f) * i, Vector3.forward));
+                    GO.transform.position += GO.transform.right;
+                    GO.transform.parent = transform;
+                }
+            }
+
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
             {
                 Dashing = true;
@@ -164,97 +176,7 @@ public class Battlemove : MonoBehaviour
             gameObject.transform.GetChild(0).tag = QuestLog.Class;
         }
     }
-
-
-    //void Dash()
-    //{
-    //    if (Dashing == false)
-    //    {
-    //        if (Input.GetKeyDown(KeyCode.W))
-    //        {
-    //            if (Input.GetKeyDown(KeyCode.W) && Wc > 0.1)
-    //            {
-    //                Mybody.velocity = DashSpeed * Vector2.up;
-    //                Dashing = true;
-    //                Timestamp = Time.time;
-    //                Timestamp2 = Time.time;
-
-    //            }
-    //            Wc = Wc + 1;
-    //        }
-
-    //        if (Wc > 0)
-    //        {
-    //            Wc = Wc - Time.deltaTime * DashThresh;
-    //        }
-
-    //        if (Input.GetKeyDown(KeyCode.A))
-    //        {
-    //            if (Input.GetKeyDown(KeyCode.A) && Ac > 0.1)
-    //            {
-    //                Mybody.velocity = DashSpeed * Vector2.left;
-    //                Dashing = true;
-    //                Timestamp = Time.time;
-    //                Timestamp2 = Time.time;
-
-    //            }
-    //            Ac = Ac + 1;
-    //        }
-
-    //        if (Ac > 0)
-    //        {
-    //            Ac = Ac - Time.deltaTime * DashThresh;
-    //        }
-
-    //        if (Input.GetKeyDown(KeyCode.S))
-    //        {
-    //            if (Input.GetKeyDown(KeyCode.S) && Sc > 0.1)
-    //            {
-    //                Mybody.velocity = DashSpeed * Vector2.down;
-    //                Dashing = true;
-    //                Timestamp = Time.time;
-    //                Timestamp2 = Time.time;
-
-    //            }
-    //            Sc = Sc + 1;
-    //        }
-
-    //        if (Sc > 0)
-    //        {
-    //            Sc = Sc - Time.deltaTime * DashThresh;
-    //        }
-
-    //        if (Input.GetKeyDown(KeyCode.D))
-    //        {
-    //            if (Input.GetKeyDown(KeyCode.D) && Dc > 0.1)
-    //            {
-    //                Mybody.velocity = DashSpeed * Vector2.right;
-    //                Dashing = true;
-    //                Timestamp = Time.time;
-    //                Timestamp2 = Time.time;
-
-    //            }
-    //            Dc = Dc + 1;
-    //        }
-
-    //        if (Dc > 0)
-    //        {
-    //            Dc = Dc - Time.deltaTime * DashThresh;
-    //        }
-    //    }
-        //if (Timestamp + DashTime - SlideDist < Time.time)
-        //{
-        //    Mybody.velocity = Mybody.velocity*.5f + new Vector2(xdir * Speed, ydir * Speed);
-        //    Vector2 Look = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        //    float angle = Mathf.Atan2(Look.y, Look.x) * Mathf.Rad2Deg;
-        //    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        //}
-
-    //    if (Timestamp + DashTime < Time.time)
-    //    {
-    //        Dashing = false;
-    //    }
-    //}
+    
 }
     
 

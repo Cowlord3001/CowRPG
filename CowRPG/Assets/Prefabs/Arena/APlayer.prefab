@@ -147,6 +147,7 @@ MonoBehaviour:
   DashSpeed: 15
   DashDistance: 3
   DashCool: 0.4
+  DashBullet: {fileID: 1259349175175990, guid: 8c974a93146e24e4681f6880bfa45665, type: 2}
 --- !u!114 &114686401830602422
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1487501090442962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -242.74641, y: -66.98601, z: -1.2070312}
+  m_LocalPosition: {x: -233.69164, y: -69.231476, z: -1.2070312}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   Speed: 3
   BulletLife: 10
   Damage: 5
-  Death: {fileID: 1315234090345772, guid: 645b8cbf70e58c0488259293dcc358e7, type: 2}
+  Death: {fileID: 1660094073161796, guid: 1b56cf34a6da07e43962961871ca6d8a, type: 2}
 --- !u!212 &212934454251384634
 SpriteRenderer:
   m_ObjectHideFlags: 1

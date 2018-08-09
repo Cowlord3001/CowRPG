@@ -71,10 +71,36 @@ public class Firing : MonoBehaviour {
 
     void FighterFire()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && Timestamp + ROF*4 < Time.time)
+        if (QuestLog.Level < 3)
         {
-            Instantiate(MeleeBullet, transform.position, transform.parent.transform.rotation);
-            Timestamp = Time.time;
+            if (Input.GetKey(KeyCode.Mouse0) && Timestamp + ROF * 4 < Time.time)
+            {
+                Instantiate(MeleeBullet, transform.position, transform.parent.transform.rotation);
+                Timestamp = Time.time;
+            }
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.Mouse0) && Timestamp + ROF * 12 < Time.time)
+            {
+                int BulletNum = Random.Range(3, 9);
+                for (int i = 0; i < BulletNum; i++)
+                {
+                    float Angle = Random.Range(-20, 20);
+                    float Speed = MeleeBullet.GetComponent<Bullet>().Speed * Random.Range(.5f, 2);
+                    float Lifetime = MeleeBullet.GetComponent<Bullet>().BulletLife * Random.Range(.1f, .3f);
+                    Vector3 Scale = MeleeBullet.transform.localScale * Random.Range(.75f, 1.5f);
+
+                    GameObject GO = Instantiate(MeleeBullet, transform.position,
+                                transform.rotation * Quaternion.AngleAxis(Angle, Vector3.forward));
+                    GO.GetComponent<Bullet>().Damage = Scale.x * 4;
+                    GO.GetComponent<Bullet>().Death.transform.localScale = Scale;
+                    GO.transform.localScale = Scale;
+                    GO.GetComponent<Bullet>().BulletLife = Lifetime;
+                    GO.GetComponent<Bullet>().Speed = Speed;
+                }
+                Timestamp = Time.time;
+            }
         }
     }
 
