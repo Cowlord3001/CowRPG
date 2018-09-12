@@ -59,19 +59,9 @@ public class Battlemove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1) && Dashing == false)
         {
-            if (gameObject.transform.GetChild(0).tag == "Fighter" && QuestLog.Level >= 3)
-            {
-                for (int i = 0; i < 16; i++)
-                {
-                    GameObject GO = Instantiate(DashBullet, transform.position,
-                        transform.rotation * Quaternion.AngleAxis((360f / 16f) * i, Vector3.forward));
-                    GO.transform.position += GO.transform.right;
-                    GO.transform.parent = transform;
-                }
-            }
-
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
             {
+                MeleeDash();
                 Dashing = true;
                 gameObject.tag = "Dashing";
                 gameObject.transform.GetChild(0).tag = "Untagged";
@@ -83,6 +73,7 @@ public class Battlemove : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
             {
+                MeleeDash();
                 Dashing = true;
                 gameObject.tag = "Dashing";
                 gameObject.transform.GetChild(0).tag = "Untagged";
@@ -94,6 +85,7 @@ public class Battlemove : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
             {
+                MeleeDash();
                 Dashing = true;
                 gameObject.tag = "Dashing";
                 gameObject.transform.GetChild(0).tag = "Untagged";
@@ -105,6 +97,7 @@ public class Battlemove : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
             {
+                MeleeDash();
                 Dashing = true;
                 gameObject.tag = "Dashing";
                 gameObject.transform.GetChild(0).tag = "Untagged";
@@ -116,6 +109,7 @@ public class Battlemove : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.W))
             {
+                MeleeDash();
                 Dashing = true;
                 gameObject.tag = "Dashing";
                 gameObject.transform.GetChild(0).tag = "Untagged";
@@ -126,6 +120,7 @@ public class Battlemove : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.S))
             {
+                MeleeDash();
                 Dashing = true;
                 gameObject.tag = "Dashing";
                 gameObject.transform.GetChild(0).tag = "Untagged";
@@ -136,6 +131,7 @@ public class Battlemove : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.A))
             {
+                MeleeDash();
                 Dashing = true;
                 gameObject.tag = "Dashing";
                 gameObject.transform.GetChild(0).tag = "Untagged";
@@ -146,6 +142,7 @@ public class Battlemove : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.D))
             {
+                MeleeDash();
                 Dashing = true;
                 gameObject.tag = "Dashing";
                 gameObject.transform.GetChild(0).tag = "Untagged";
@@ -174,6 +171,20 @@ public class Battlemove : MonoBehaviour
         {
             Dashing = false;
             gameObject.transform.GetChild(0).tag = QuestLog.Class;
+        }
+    }
+
+    void MeleeDash()
+    {
+        if (gameObject.transform.GetChild(0).tag == "Fighter" && QuestLog.Level >= 3)
+        {
+            for (int i = 0; i < 16; i++)
+            {
+                GameObject GO = Instantiate(DashBullet, transform.position,
+                    transform.rotation * Quaternion.AngleAxis((360f / 16f) * i, Vector3.forward));
+                GO.transform.position += GO.transform.right;
+                GO.transform.parent = transform;
+            }
         }
     }
     

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212878241925852382}
   - component: {fileID: 58688626130720630}
   - component: {fileID: 114323821194791060}
+  - component: {fileID: 50039826517641826}
   m_Layer: 0
   m_Name: MeleeDashBullet
   m_TagString: Untagged
@@ -42,6 +43,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50039826517641826
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259349175175990}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &58688626130720630
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -69,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0
-  BulletLife: 8
+  BulletLife: 0.4
   Damage: 3
   Death: {fileID: 1315234090345772, guid: 645b8cbf70e58c0488259293dcc358e7, type: 2}
 --- !u!212 &212878241925852382
