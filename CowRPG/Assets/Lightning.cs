@@ -7,13 +7,20 @@ public class Lightning : MonoBehaviour {
     static int BranchNum;
     static int BranchDepth;
     public GameObject Bolt;
+    bool Damaging;
+    bool Damaged;
 
 	// Use this for initialization
-	void Start () {
-		if(BranchNum == 0)
+	IEnumerator Start () {
+
+        InvokeRepeating("Flashing", 0, .4f);
+
+        if (BranchNum == 0)
         {
             BranchNum = 3;
+            //3
             BranchDepth = 100;
+            //100
             for (int i = 0; i < BranchNum; i++)
             {
                 GameObject GO = Instantiate(Bolt, 
@@ -25,6 +32,9 @@ public class Lightning : MonoBehaviour {
         }
         else if(BranchDepth > 0)
         {
+
+            yield return new WaitForSeconds(.05f);
+
             int temp = Random.Range(1, 3);
             BranchNum = temp;
 
@@ -37,12 +47,37 @@ public class Lightning : MonoBehaviour {
                 GO.transform.position += .35f * GO.transform.right;
             }
             BranchDepth--;
+            
         }
+        Destroy(gameObject, 4);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
-    
+
+    void Flashing()
+    {
+        if (Damaging == true)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(0.7688679f, 0.9059389f, 1, 1);
+            Damaging = false;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            Damaging = true;
+        }
+        Damaged = false;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (Damaging == true && collision.gameObject.tag == "Enemy" && Damaged == false)
+        {
+            collision.gameObject.SendMessage("ApplyDMG", 1);
+            Damaged = true;
+        }
+    }
+
 }

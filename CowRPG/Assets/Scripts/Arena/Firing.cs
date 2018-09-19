@@ -9,6 +9,7 @@ public class Firing : MonoBehaviour {
     public GameObject RangedBulletSpecial_Burst;
     public GameObject MeleeBullet;
     public GameObject SpellBullet;
+    public GameObject SpellBulletSpecial_Bolt;
     public float ROF;
     float Timestamp;
     float Timer;
@@ -41,7 +42,7 @@ public class Firing : MonoBehaviour {
 
     void RangerFire()
     {
-        Debug.Log(((int)(100 /Time.deltaTime))/100);
+        //Debug.Log(((int)(100 /Time.deltaTime))/100);
 
 
         if(QuestLog.Level < 3)
@@ -137,6 +138,11 @@ public class Firing : MonoBehaviour {
                 GO.GetComponent<Bullet>().Damage = 3 + (150 / 8) * (Time.time - Timestamp);
             }
         }
+        if (QuestLog.Level >= 5 && Input.GetKeyDown(KeyCode.Alpha1) && Timer > 10)
+        {
+            SpellcasterSpecial_Bolt();
+            Timer = 0;
+        }
     }
 
     void RangerSpecial_Burst()
@@ -151,6 +157,15 @@ public class Firing : MonoBehaviour {
                         transform.rotation * Quaternion.AngleAxis((angle * i) + angle / 2, Vector3.forward));
         }
 
+        ROF -= 100000;
+    }
+
+    void SpellcasterSpecial_Bolt()
+    {
+        ROF += 100000;
+        Instantiate(SpellBulletSpecial_Bolt,
+                    transform.position,
+                    transform.rotation);
         ROF -= 100000;
     }
 

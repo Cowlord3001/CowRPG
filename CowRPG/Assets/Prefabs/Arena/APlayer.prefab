@@ -131,6 +131,8 @@ MonoBehaviour:
     type: 2}
   SpellBullet: {fileID: 1965582941320604, guid: 07d3f7e23c866124b9efe10fb98d6213,
     type: 2}
+  SpellBulletSpecial_Bolt: {fileID: 1119899196180484, guid: 9a0b3e50f3ac7a2419e10536f125bf9d,
+    type: 2}
   ROF: 0.05
 --- !u!114 &114664443922509774
 MonoBehaviour:
