@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour {
     public int EXP;
     public GameObject Death;
     TextMesh DisplayHP;
+    int Total;
+    float Timer;
 
 	// Use this for initialization
 	void Start () {
@@ -29,11 +31,22 @@ public class EnemyHealth : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         DisplayHP.text = hp.ToString();
+        //Timer += Time.deltaTime;
+        //if(Timer >= 5)
+        //{
+        //    Timer = 0;
+        //    Total = 0;
+        //}
 	}
 
     void ApplyDMG(int DMG)
     {
-        hp = hp - DMG;
+        //Total += DMG;
+        //if (Total < 200)
+        //{
+        //    hp = hp - DMG;
+        //}
+        hp -= DMG;
         if (hp <= 0)
         {
             GameObject GO = Instantiate(Death, transform.position, Quaternion.identity);

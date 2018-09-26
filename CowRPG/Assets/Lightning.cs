@@ -51,6 +51,12 @@ public class Lightning : MonoBehaviour {
         }
         Destroy(gameObject, 4);
 	}
+
+    public static void Killswitch()
+    {
+            BranchNum = 0;
+            BranchDepth = 100;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -77,6 +83,10 @@ public class Lightning : MonoBehaviour {
         {
             collision.gameObject.SendMessage("ApplyDMG", 1);
             Damaged = true;
+        }
+        if(collision.name == "ForestBoss")
+        {
+            Destroy(gameObject);
         }
     }
 

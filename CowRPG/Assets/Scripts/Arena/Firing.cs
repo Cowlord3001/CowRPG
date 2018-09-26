@@ -163,6 +163,7 @@ public class Firing : MonoBehaviour {
     void SpellcasterSpecial_Bolt()
     {
         ROF += 100000;
+        Lightning.Killswitch();
         Instantiate(SpellBulletSpecial_Bolt,
                     transform.position,
                     transform.rotation);
