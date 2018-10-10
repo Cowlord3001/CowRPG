@@ -8,7 +8,7 @@ public class Firing : MonoBehaviour {
     public GameObject RangedBullet2;
     public GameObject RangedBulletSpecial_Burst;
     public GameObject MeleeBullet;
-    public GameObject SpellBullet;
+    public GameObject[] SpellBullet;
     public GameObject SpellBulletSpecial_Bolt;
     public float ROF;
     float Timestamp;
@@ -16,10 +16,12 @@ public class Firing : MonoBehaviour {
     bool Charging;
     GameObject GO;
     Vector3 Scale;
+    int SpellType;
 
 	// Use this for initialization
 	void Start () {
         Timer = 11;
+        SpellType = 0;
 	}
 	
 	// Update is called once per frame
@@ -107,22 +109,46 @@ public class Firing : MonoBehaviour {
 
     void SpellFire()
     {
+        if (Input.GetKeyDown(KeyCode.Q) && QuestLog.Level >= 5)
+        {
+            SpellType++;
+            SpellType = SpellType % 3;
+            if (SpellType == 0)
+            {
+                GetComponent<SpriteRenderer>().color = Color.black;
+            }
+            else if (SpellType == 1)
+            {
+                GetComponent<SpriteRenderer>().color = Color.red;
+            }
+            else if (SpellType == 2)
+            {
+                GetComponent<SpriteRenderer>().color = new Color(0.7450981f, 0, 1, 1);
+            }
+            else
+            {
+                
+            }
+        }
+
         if (GO == null)
         {
             Charging = false;
         }
         if (Input.GetKeyDown(KeyCode.Mouse0) && Timestamp + ROF * 10 < Time.time)
         {
-            GO = Instantiate(SpellBullet, transform.position, transform.parent.transform.rotation);
+            GO = Instantiate(SpellBullet[SpellType], transform.position, transform.parent.transform.rotation);
             Timestamp = Time.time;
             Charging = true;
             Scale = GO.transform.localScale;
         }
         else if(Input.GetKeyUp(KeyCode.Mouse0) && GO != null)
         {
+            GO.GetComponent<Bullet>().Released = true;
             GO.GetComponent<Rigidbody2D>().velocity = transform.right * 5;
             GO = null;
             Charging = false;
+            
         }
         if(Charging == true)
         {
