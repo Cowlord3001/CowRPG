@@ -6,6 +6,7 @@ public class Firebullet : Bullet{
 
     float Timer;
     public GameObject Bullet;
+    public bool Original = true;
     
 	// Use this for initialization
 	void Start () {
@@ -19,7 +20,7 @@ public class Firebullet : Bullet{
             Timer += Time.deltaTime;
         }
 
-        if(Timer >= 2)
+        if(Timer >= 1 && Original == true)
         {
             Split();
         }
@@ -28,8 +29,22 @@ public class Firebullet : Bullet{
     void Split()
     {
         GameObject GO = Instantiate(Bullet, transform.position, transform.rotation);
-        GO.transform.localScale = transform.localScale * (1 / 3);
-        GO.GetComponent<Bullet>().Damage = Damage * (1 / 3);
+        GO.GetComponent<Firebullet>().Original = false;
+        GO.GetComponent<Rigidbody2D>().velocity = GO.transform.right * 5;
+        GO.transform.localScale = transform.localScale * (1f / 2f);
+        GO.GetComponent<Bullet>().Damage = Damage * (1f / 2f);
+
+        GO = Instantiate(Bullet, transform.position, transform.rotation*Quaternion.AngleAxis(30, Vector3.forward));
+        GO.GetComponent<Firebullet>().Original = false;
+        GO.GetComponent<Rigidbody2D>().velocity = GO.transform.right * 5;
+        GO.transform.localScale = transform.localScale * (1f / 2f);
+        GO.GetComponent<Bullet>().Damage = Damage * (1f / 2f);
+
+        GO = Instantiate(Bullet, transform.position, transform.rotation * Quaternion.AngleAxis(-30, Vector3.forward));
+        GO.GetComponent<Firebullet>().Original = false;
+        GO.GetComponent<Rigidbody2D>().velocity = GO.transform.right * 5;
+        GO.transform.localScale = transform.localScale * (1f / 2f);
+        GO.GetComponent<Bullet>().Damage = Damage * (1f / 2f);
         Destroy(gameObject);
     }
 }

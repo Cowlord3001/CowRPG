@@ -116,14 +116,17 @@ public class Firing : MonoBehaviour {
             if (SpellType == 0)
             {
                 GetComponent<SpriteRenderer>().color = Color.black;
+                ROF = 0.05f;
             }
             else if (SpellType == 1)
             {
                 GetComponent<SpriteRenderer>().color = Color.red;
+                ROF = 0.03f;
             }
             else if (SpellType == 2)
             {
                 GetComponent<SpriteRenderer>().color = new Color(0.7450981f, 0, 1, 1);
+                ROF = 0.05f;
             }
             else
             {
@@ -135,16 +138,17 @@ public class Firing : MonoBehaviour {
         {
             Charging = false;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Timestamp + ROF * 10 < Time.time)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Timestamp + ROF * 10 < Time.time && GO == null)
         {
             GO = Instantiate(SpellBullet[SpellType], transform.position, transform.parent.transform.rotation);
             Timestamp = Time.time;
             Charging = true;
             Scale = GO.transform.localScale;
         }
-        else if(Input.GetKeyUp(KeyCode.Mouse0) && GO != null)
+        else if(Input.GetKeyUp(KeyCode.Mouse0) && GO != null && Battlemove.Dashing == false)
         {
             GO.GetComponent<Bullet>().Released = true;
+            GO.transform.rotation = transform.rotation;
             GO.GetComponent<Rigidbody2D>().velocity = transform.right * 5;
             GO = null;
             Charging = false;
@@ -157,11 +161,22 @@ public class Firing : MonoBehaviour {
             
             if (GO.transform.localScale.x < 5)
             {
-                GO.transform.localScale = GO.transform.localScale + Scale * Time.deltaTime * .5f;
-                ParticleSystem.MainModule main;
-                main = GO.GetComponent<Bullet>().Death.GetComponent<ParticleSystem>().main;
-                main.startSize = GO.transform.localScale.x * .06f;
-                GO.GetComponent<Bullet>().Damage = 3 + (150 / 8) * (Time.time - Timestamp);
+                if (GO.name == "FireBullet(Clone)")
+                {
+                    GO.transform.localScale = GO.transform.localScale + Scale * Time.deltaTime * .8f;
+                    ParticleSystem.MainModule main;
+                    main = GO.GetComponent<Bullet>().Death.GetComponent<ParticleSystem>().main;
+                    main.startSize = GO.transform.localScale.x * .06f;
+                    GO.GetComponent<Bullet>().Damage = 3 + (150 / 8) * (Time.time - Timestamp);
+                }
+                else
+                {
+                    GO.transform.localScale = GO.transform.localScale + Scale * Time.deltaTime * .5f;
+                    ParticleSystem.MainModule main;
+                    main = GO.GetComponent<Bullet>().Death.GetComponent<ParticleSystem>().main;
+                    main.startSize = GO.transform.localScale.x * .06f;
+                    GO.GetComponent<Bullet>().Damage = 3 + (150 / 8) * (Time.time - Timestamp);
+                }
             }
         }
         if (QuestLog.Level >= 5 && Input.GetKeyDown(KeyCode.Alpha1) && Timer > 10)
