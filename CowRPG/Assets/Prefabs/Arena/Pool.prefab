@@ -9,47 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1968796324559464}
+  m_RootGameObject: {fileID: 1872590195250514}
   m_IsPrefabParent: 1
---- !u!1 &1968796324559464
+--- !u!1 &1872590195250514
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4596423148538720}
-  - component: {fileID: 212572757900642388}
-  - component: {fileID: 50011004082528078}
-  - component: {fileID: 58149699075055258}
-  - component: {fileID: 114926949808419136}
+  - component: {fileID: 4573503963341724}
+  - component: {fileID: 212373208561762230}
+  - component: {fileID: 50474620356687042}
+  - component: {fileID: 58471646583874080}
   m_Layer: 0
-  m_Name: AOEBullet
+  m_Name: Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4596423148538720
+--- !u!4 &4573503963341724
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1968796324559464}
+  m_GameObject: {fileID: 1872590195250514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -239.21683, y: -66.055595, z: -1.2070312}
+  m_LocalPosition: {x: -237.8491, y: -65.980736, z: -1.2070312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50011004082528078
+--- !u!50 &50474620356687042
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1968796324559464}
+  m_GameObject: {fileID: 1872590195250514}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -63,12 +62,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58149699075055258
+--- !u!58 &58471646583874080
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1968796324559464}
+  m_GameObject: {fileID: 1872590195250514}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -78,29 +77,12 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &114926949808419136
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1968796324559464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 638e26256c0276f40aba180b99eb3730, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Released: 0
-  Speed: 0
-  BulletLife: 999
-  Damage: 1
-  Death: {fileID: 1315234090345772, guid: 645b8cbf70e58c0488259293dcc358e7, type: 2}
-  Pool: {fileID: 1872590195250514, guid: e970d3b753944894d9f16641d34feb25, type: 2}
---- !u!212 &212572757900642388
+--- !u!212 &212373208561762230
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1968796324559464}
+  m_GameObject: {fileID: 1872590195250514}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -131,7 +113,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0, b: 0.7795243, a: 1}
+  m_Color: {r: 0.80276585, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
