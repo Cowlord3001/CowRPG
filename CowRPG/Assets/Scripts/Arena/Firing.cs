@@ -169,6 +169,14 @@ public class Firing : MonoBehaviour {
                     main.startSize = GO.transform.localScale.x * .06f;
                     GO.GetComponent<Bullet>().Damage = 3 + (150 / 8) * (Time.time - Timestamp);
                 }
+                else if(GO.name == "AOEBullet(Clone)")
+                {
+                    GO.transform.localScale = GO.transform.localScale + Scale * Time.deltaTime * 1.2f;
+                    ParticleSystem.MainModule main;
+                    main = GO.GetComponent<Bullet>().Death.GetComponent<ParticleSystem>().main;
+                    main.startSize = GO.transform.localScale.x * .06f;
+                    GO.GetComponent<Bullet>().Damage = 3 + (150 / 8) * (Time.time - Timestamp);
+                }
                 else
                 {
                     GO.transform.localScale = GO.transform.localScale + Scale * Time.deltaTime * .5f;

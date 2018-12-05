@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212373208561762230}
   - component: {fileID: 50474620356687042}
   - component: {fileID: 58471646583874080}
+  - component: {fileID: 114892134007224950}
   m_Layer: 0
   m_Name: Pool
   m_TagString: Untagged
@@ -77,6 +78,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &114892134007224950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872590195250514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438b328a3543c824985fc9a62242c8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 0
+  Lifetime: 5
 --- !u!212 &212373208561762230
 SpriteRenderer:
   m_ObjectHideFlags: 1

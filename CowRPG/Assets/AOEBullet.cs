@@ -45,6 +45,7 @@ public class AOEBullet : Bullet {
     {
         GameObject GO = Instantiate(Pool, transform.position, Quaternion.identity);
         GO.transform.localScale = transform.localScale * 2f;
+        GO.GetComponent<Pool>().Damage = transform.localScale.magnitude * 3f;
         Destroy(gameObject);
     }
 }
