@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnEnemies : MonoBehaviour {
 
@@ -16,9 +17,14 @@ public class SpawnEnemies : MonoBehaviour {
     
     public GameObject Boss;
     bool loading;
+    
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene("Overworld");
+    }
 
-	// Use this for initialization
-	void OnEnable ()
+    // Use this for initialization
+    void OnEnable ()
     {
         loading = false;
         int EnemyNum = Random.Range(EnemyMin, EnemyMax + 1);
@@ -70,6 +76,10 @@ public class SpawnEnemies : MonoBehaviour {
 
 	// Update is called once per frame
 	void LateUpdate () {
+        if(Player == null)
+        {
+            Invoke("LoadLevel", 3);
+        }
 		if(ActiveEnemies.Count == 0 && loading == false)
         {
             Invoke("LoadWorld", 2);

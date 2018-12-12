@@ -32,6 +32,9 @@ public class QuestLog : MonoBehaviour {
     static int EXP;
     public static int Level;
 
+    public static Text EXPText;
+    public static Text LevelText;
+
     static int ForestMinibossCount;
 
 	// Use this for initialization
@@ -42,7 +45,8 @@ public class QuestLog : MonoBehaviour {
         Level = 1;
         ForestMinibossCount = 0;
         Player = GameObject.Find("Player");
-        
+        EXPText = GameObject.Find("CurrentEXP").GetComponent<Text>();
+        LevelText = GameObject.Find("CurrentLevel").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -110,24 +114,31 @@ public class QuestLog : MonoBehaviour {
     public static void AddEXP(int n)
     {
         EXP = EXP + n;
-        Debug.Log("Current EXP = " + EXP);
-        if(EXP >= 500 && EXP < 1100)
+        if(EXP >= 400 && EXP < 900)
         {
             Level = 2;
+            EXPText.text = EXP + "/" + 900;
         }
-        else if (EXP >= 1100 && EXP < 2700)
+        else if (EXP >= 900 && EXP < 1700)
         {
             Level = 3;
+            EXPText.text = EXP + "/" + 1700;
         }
-        else if (EXP >= 2700 && EXP < 6500)
+        else if (EXP >= 1700 && EXP < 2800)
         {
             Level = 4;
+            EXPText.text = EXP + "/" + 2800;
         }
-        else if (EXP >= 6500)
+        else if (EXP >= 4100)
         {
             Level = 5;
+            EXPText.text = EXP + "/" + 4100;
         }
-        Debug.Log("Current Level = " + Level);
+        else
+        {
+            EXPText.text = EXP + "/" + 400;
+        }
+        LevelText.text = Level.ToString();
     }
 
     public void MiniBossHelper()
@@ -186,7 +197,6 @@ public class QuestLog : MonoBehaviour {
 
             while (Timer < 2)
             {
-                Debug.Log("Moving Camera");
                 Camera.main.transform.position = Camera.main.transform.position + Dir * (Time.deltaTime / 2);
                 Timer += Time.deltaTime;
                 yield return null;
